@@ -26,7 +26,7 @@ ul {
 
 label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 input,
@@ -35,7 +35,7 @@ select {
   display: block;
   width: 100%;
   font: inherit;
-  padding: 0.3;
+  padding: 0.35em;
   border-radius: 3px;
   border: 1px solid rgb(68, 67, 67);
   margin-bottom: 0.7rem;
@@ -43,8 +43,9 @@ select {
 }
 
 input:focus,
-input:hover {
-  border: 2px solid rgb(244, 184, 54);
+input:hover,
+textarea:hover {
+  border: 2px solid rgb(244, 212, 54);
   cursor: pointer;
 }
 
