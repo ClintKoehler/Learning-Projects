@@ -65,12 +65,17 @@ section > .form-control {
   margin-top: 0.7rem;
 }
 
+.btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
 button {
   width: 5rem;
   height: 2rem;
   border-radius: 4px;
   font-size: 0.9rem;
-  margin: 1rem 0 0.2rem;
+  margin: 1rem 0 0.9rem 0.2rem;
 }
 
 #clear {

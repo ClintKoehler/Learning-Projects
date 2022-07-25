@@ -31,9 +31,11 @@
             <li>
               <label for="phonenumber">Your Phone Number</label>
               <input
-                type="numeric"
+                type="tel"
                 id="phonenumber"
                 name="phone-number"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                placeholder="XXX-XXX-XXXX"
                 required
               />
             </li>
@@ -104,8 +106,8 @@
 
         <section>
           <div class="btn">
-            <button id="clear">Clear</button>
-            <button id="submit">Submit</button>
+            <button type="reset" id="clear">Clear</button>
+            <button type="submit" id="submit">Submit</button>
           </div>
         </section>
       </form>
