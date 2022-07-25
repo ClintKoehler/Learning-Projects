@@ -1,8 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
   background-color: rgb(144, 150, 165);
-  margin: 0;
-  padding: 0;
   color: rgb(34, 33, 33);
 }
 
@@ -13,9 +11,9 @@ h1 {
 
 form {
   background-color: rgb(190, 204, 221);
-  width: 550px;
+  width: 35rem;
   padding: 10px 15px;
-  margin: 2rem auto;
+  margin: 3rem auto;
   border-radius: 8px;
   box-shadow: 2px 4px 8px rgb(68, 67, 67);
 }
@@ -32,14 +30,16 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
   display: block;
   width: 100%;
   font: inherit;
-  padding: 0.4rem 0;
+  padding: 0.3;
   border-radius: 3px;
   border: 1px solid rgb(68, 67, 67);
   margin-bottom: 0.7rem;
+  box-sizing: border-box;
 }
 
 input:focus,
@@ -50,4 +50,34 @@ input:hover {
 
 textarea {
   resize: none;
+}
+
+.form-control {
+  display: flex;
+}
+
+.form-control input {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+section > .form-control {
+  margin-top: 0.7rem;
+}
+
+button {
+  width: 5rem;
+  height: 2rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin: 1rem 0 0.2rem;
+}
+
+#clear {
+  background-color: transparent;
+}
+
+#submit {
+  background-color: rgb(67, 74, 107);
+  color: white;
 }

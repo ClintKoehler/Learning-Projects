@@ -31,7 +31,7 @@
             <li>
               <label for="phonenumber">Your Phone Number</label>
               <input
-                type="number"
+                type="numeric"
                 id="phonenumber"
                 name="phone-number"
                 required
@@ -52,6 +52,61 @@
             <option value="friend">Friend</option>
             <option value="googlesearch">Google Search</option>
           </select>
+        </section>
+
+        <section>
+          <h2>How should we reply?</h2>
+          <ul>
+            <li class="form-control">
+              <input
+                type="radio"
+                id="callme"
+                name="reply"
+                value="call-me"
+                required
+              />
+              <label for="callme">Call me</label>
+            </li>
+            <li class="form-control">
+              <input
+                type="radio"
+                id="email"
+                name="reply"
+                value="email-me"
+                required
+              />
+              <label for="email">Send me an email</label>
+            </li>
+            <li class="form-control">
+              <input
+                type="radio"
+                id="noreply"
+                name="reply"
+                value="no-reply"
+                required
+              />
+              <label for="noreply">Don't reply</label>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <div class="form-control">
+            <input
+              type="checkbox"
+              id="acceptterms"
+              name="accept-terms"
+              required
+            />
+            <label for="acceptterms">Accept Terms</label>
+          </div>
+        </section>
+
+        <section>
+          <div class="btn">
+            <button id="clear">Clear</button>
+            <button id="submit">Submit</button>
+          </div>
         </section>
       </form>
     </main>
