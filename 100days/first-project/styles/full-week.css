@@ -1,0 +1,52 @@
+h1 {
+  font-size: 48px;
+  color: rgb(71, 62, 62);
+  margin: 0;
+}
+
+a {
+  background-color: rgb(167, 1, 78);
+  color: white;
+  border-radius: 4px;
+  font-size: 24px;
+  padding: 12px 48px;
+  display: inline-block;
+}
+
+a:hover {
+  text-decoration: none;
+  background-color: rgb(180, 12, 90);
+}
+
+header p {
+  margin-bottom: 36px;
+}
+
+p {
+  color: rgb(167, 32, 32);
+  margin: 12px;
+}
+
+ol {
+  list-style: none;
+  width: 500px;
+  margin: 36px auto 0 auto;
+  padding: 0;
+}
+
+li {
+  background-color: rgb(223, 136, 124);
+  border-radius: 6px;
+  margin: 32px;
+  padding: 16px;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  color: rgb(78, 13, 5);
+  font-family: 'Oswald', sans-serif;
+}
+
+.highlight-goal {
+  background-color: rgb(206, 89, 69);
+}

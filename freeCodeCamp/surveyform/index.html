@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>SurveyForm</title>
+</head>
+<body>
+
+    <h1 id="title">freeCodeCamp Survey Form</h1>
+    <p id="description">Thank you for taking the time to help us improve the platform</p>
+    
+    
+    
+<form id="survey-form">
+    <div class="body">    
+        <fieldset>
+        <label id="name-label">Name<input type="text" id="name" placeholder="Enter Your Name" required/></label>
+
+        <label id="email-label">Email<input type="email" id="email" placeholder="Enter Your Email" required/></label>
+
+        <label id="number-label">Age<input type="number" id="number" min="1" max="120" placeholder="Enter a Number"/></label>
+    </fieldset>
+    
+    <fieldset>
+        <label>How did you hear about us?</label>
+        <select id="dropdown">
+            <option value="">Select an Option</option>
+            <option value="1">Student</option>
+            <option value="2">Full Time Job</option>
+            <option value="3">Full Time Learner</option>
+            <option value="4">Prefer Not To Say</option>
+            <option value="5">Other</option>
+        </select>
+    </fieldset>
+    
+    <fieldset>    
+        <label><input type="radio" name="recommend" value="recommend" class="inline">Yes</label>
+        <label><input type="radio" name="recommend" value="recommend" class="inline">No</label>
+        <label><input type="radio" name="recommend" value="recommend" class="inline">Maybe</label>
+    </fieldset>
+
+    <fieldset>
+        <label><input type="checkbox" value="suggestion" class="inline">The color is terrible</label>
+        <label><input type="checkbox" value="suggestion" class="inline">The developer sucks</label>
+        <label><input type="checkbox" value="suggestion" class="inline">Needs more flair</label>
+    </fieldset>
+    
+    <fieldset>
+        <label><textarea name="comments" placeholder="Comments or Suggestions" rows="8" cols="50"></textarea></label>
+    </fieldset>
+    
+    <input type="submit" id="submit">
+    
+</form>
+
+
+</div>
+</body>
+</html>
