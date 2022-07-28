@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(51, 51, 51);
+}
+
+form {
+  background-color: rgb(249, 235, 183);
+  padding: 1.2rem;
+  border-radius: 6px;
+  width: 30rem;
+  margin: 3rem auto;
+}
+
+label {
+  display: block;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+input {
+  width: 60%;
+  background-color: rgb(255, 249, 186);
+  border-radius: 3px;
+  border: 1.5px solid rgb(131, 178, 211);
+  height: 1.3rem;
+}
+
+input:focus {
+  background: rgb(247, 222, 163);
+}
+
+input:warning {
+  background-color: coral;
+}
+
+div {
+  display: inline;
+  padding-left: 0.7rem;
+}
+
+button {
+  display: block;
+  margin-top: 0.7rem;
+  padding: 6px 15px;
+  background-color: rgb(255, 212, 82);
+  border-radius: 3px;
+  border: 1px solid black;
+  cursor: pointer;
+}
