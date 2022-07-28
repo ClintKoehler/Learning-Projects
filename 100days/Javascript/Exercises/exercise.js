@@ -104,3 +104,23 @@ function changeParagraphText() {
 }
 
 paragraphElement.addEventListener('click', changeParagraphText); // omitting the () tells the browser to wait for the event before running the function. If you leave the () it runs it as soon as the page loads
+////////////////////////////
+let paragraphElement = document.querySelector('p');
+
+function changeParagraphText() {
+  paragraphElement.textContent = 'Clicked!';
+}
+
+paragraphElement.addEventListener('click', changeParagraphText);
+//////////////////////////////////////////////////
+let inputElement = document.querySelector('input');
+
+function retrieveUserInput(event) {
+  //   let enteredText = inputElement.value;
+  let enteredText = event.target.value;
+  //   let enteredText = event.data;
+  console.log(enteredText);
+  //   console.log(event);
+}
+
+inputElement.addEventListener('input', retrieveUserInput);

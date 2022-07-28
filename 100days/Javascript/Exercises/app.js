@@ -1,19 +1,19 @@
-let paragraphElement = document.querySelector('p');
+let productNameInputElement = document.getElementById('product-name');
 
-function changeParagraphText() {
-  paragraphElement.textContent = 'Clicked!';
-}
+let remainingCharsElement = document.getElementById('count');
+// these two variables ACCESS
 
-paragraphElement.addEventListener('click', changeParagraphText);
-//////////////////////////////////////////////////
-let inputElement = document.querySelector('input');
+let maxAllowedChars = productNameInputElement.maxLength;
+// This dynamically assigns the max length allowed in the input element
 
-function retrieveUserInput(event) {
-  //   let enteredText = inputElement.value;
+function updateRemainingChars(event) {
   let enteredText = event.target.value;
-  //   let enteredText = event.data;
-  console.log(enteredText);
-  //   console.log(event);
+  let enteredTextLength = enteredText.length;
+
+  let remainingCharacters = maxAllowedChars - enteredTextLength;
+
+  remainingCharsElement.textContent = remainingCharacters;
 }
 
-inputElement.addEventListener('input', retrieveUserInput);
+productNameInputElement.addEventListener('input', updateRemainingChars);
+// input is a method and when it happens it will run the function updateRmainingChars
