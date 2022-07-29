@@ -3,9 +3,10 @@ body {
 }
 
 form {
-  background-color: rgb(249, 235, 183);
+  background-color: rgb(183, 230, 249);
   padding: 1.2rem;
   border-radius: 6px;
+  border: 2px solid rgb(98, 108, 113);
   width: 30rem;
   margin: 3rem auto;
 }
@@ -18,14 +19,13 @@ label {
 
 input {
   width: 60%;
-  background-color: rgb(255, 249, 186);
+  background-color: rgb(252, 254, 255);
   border-radius: 3px;
   border: 1.5px solid rgb(131, 178, 211);
   height: 1.3rem;
 }
 
-input:focus {
-  background: rgb(247, 222, 163);
+input: {
 }
 
 input:warning {
@@ -41,8 +41,17 @@ button {
   display: block;
   margin-top: 0.7rem;
   padding: 6px 15px;
-  background-color: rgb(255, 212, 82);
-  border-radius: 3px;
-  border: 1px solid black;
+  background-color: rgb(52, 51, 49);
+  border-radius: 5px;
+  border: 1px solid rgb(135, 195, 249);
   cursor: pointer;
+  color: aliceblue;
+}
+
+input.warning {
+  background-color: rgb(248, 191, 145);
+}
+
+#count.warning {
+  color: rgb(211, 109, 26);
 }
