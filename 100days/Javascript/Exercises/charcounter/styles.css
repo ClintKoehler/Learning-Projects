@@ -25,9 +25,6 @@ input {
   height: 1.3rem;
 }
 
-input: {
-}
-
 input:warning {
   background-color: coral;
 }
