@@ -6,7 +6,7 @@ form {
   background-color: rgb(183, 230, 249);
   padding: 1.2rem;
   border-radius: 6px;
-  border: 2px solid rgb(98, 108, 113);
+  border: 2px solid rgb(222, 225, 227);
   width: 30rem;
   margin: 3rem auto;
 }
@@ -53,5 +53,13 @@ input.warning {
 }
 
 #count.warning {
-  color: rgb(211, 109, 26);
+  color: rgb(241, 169, 110);
+}
+
+input.error {
+  background-color: rgb(250, 100, 86);
+}
+
+#count.error {
+  color: rgb(242, 85, 71);
 }
