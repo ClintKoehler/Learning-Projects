@@ -52,7 +52,7 @@ function displayUserData(click) {
 
   for (const key in dummyUserData) {
     const newUserDataListItemElement = document.createElement('li');
-    const outputText = key.toUpperCase() + ':' + dummyUserData[key];
+    const outputText = key.toUpperCase() + ': ' + dummyUserData[key];
     newUserDataListItemElement.textContent = outputText;
     outputDataElement.append(newUserDataListItemElement);
   }
