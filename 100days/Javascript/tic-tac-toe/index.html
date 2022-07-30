@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+    <title>Tic-Tac-Toe</title>
+  </head>
+  <header>
+    <h1>Play Tic, Tac, Toe</h1>
+    <p>Built with HTML, CSS, and JavaScript</p>
+  </header>
+  <body>
+    <div class="game-board">
+      <div id="player-one" class="player-info-card">
+        <h3>Player 1</h3>
+        <h2 id="player-one-name" class="player-name">PLAYER NAME</h2>
+        <h2 class="xo">X</h2>
+        <a href="" id="player-one-edit" class="edit">Edit</a>
+      </div>
+
+      <div id="player-two" class="player-info-card">
+        <h3>Player 2</h3>
+        <h2 id="player-two-name" class="player-name">PLAYER NAME</h2>
+        <h2 class="xo">O</h2>
+        <a href="" id="player-two-edit" class="edit">Edit</a>
+      </div>
+    </div>
+    <button type="button">Start New Game</button>
+    <div class="game-board"></div>
+  </body>
+</html>
