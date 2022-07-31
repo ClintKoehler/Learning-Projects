@@ -35,6 +35,8 @@ header p {
   height: 11rem;
   width: 20rem;
   margin: 1rem;
+  padding: 0.5rem;
+  white-space: nowrap;
 }
 
 #player-one:hover {
