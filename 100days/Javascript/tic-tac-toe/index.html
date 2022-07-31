@@ -24,17 +24,36 @@
         <h3>Player 1</h3>
         <h2 id="player-one-name" class="player-name">PLAYER NAME</h2>
         <h2 class="xo">X</h2>
-        <a href="" id="player-one-edit" class="edit">Edit</a>
+
+        <div id="player-one-edit" class="edit">Edit</div>
       </div>
 
       <div id="player-two" class="player-info-card">
         <h3>Player 2</h3>
         <h2 id="player-two-name" class="player-name">PLAYER NAME</h2>
         <h2 class="xo">O</h2>
-        <a href="" id="player-two-edit" class="edit">Edit</a>
+
+        <div id="player-two-edit" class="edit">Edit</div>
       </div>
     </div>
     <button type="button">Start New Game</button>
     <div class="game-board"></div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <form action="">
+          <span class="close"></span>
+          <h2>Choose your name</h2>
+          <label for="name">Player Name</label>
+          <input type="text" id="name" name="name" />
+          <div class="modal-buttons">
+            <button id="cancel">Cancel</button>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
