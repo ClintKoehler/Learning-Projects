@@ -41,20 +41,8 @@ header p {
   white-space: nowrap;
 }
 
-#player-one:hover {
-  border: 0px;
-  box-shadow: 1px 1px 8px rgb(81, 93, 127);
-  border-style: ridge;
-}
-
-#player-two:hover {
-  border: 0px;
-  box-shadow: 1px 1px 8px rgb(81, 93, 127);
-  border-style: ridge;
-}
-
-h3 {
-  margin: 1.2rem auto 0.6rem;
+.player-info-card h3 {
+  margin: 1rem auto 0.5rem;
 }
 
 .player-name {
@@ -63,7 +51,7 @@ h3 {
 
 .xo {
   font-size: 2rem;
-  margin: 0.3rem auto 0.4em;
+  margin: 0.4rem auto 0.2rem;
 }
 
 .edit {
@@ -77,6 +65,18 @@ h3 {
 .edit:hover {
   font-size: 1.1rem;
   cursor: pointer;
+}
+
+#player-one:hover {
+  border: 0px;
+  box-shadow: 1px 1px 8px rgb(81, 93, 127);
+  border-style: ridge;
+}
+
+#player-two:hover {
+  border: 0px;
+  box-shadow: 1px 1px 8px rgb(81, 93, 127);
+  border-style: ridge;
 }
 
 #start-btn {
