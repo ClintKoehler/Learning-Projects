@@ -1,0 +1,99 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  color: rgb(44, 41, 44);
+}
+
+header {
+  height: 9rem;
+  width: 100%;
+  background: linear-gradient(30deg, rgb(128, 147, 201), rgb(81, 93, 127));
+  color: aliceblue;
+  text-align: center;
+  margin-top: -1.4rem;
+  padding: 0.5rem 5%;
+}
+
+header h1 {
+  padding-top: 1rem;
+}
+
+header p {
+  margin-top: -0.4rem;
+}
+
+.game-configuration {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.3rem;
+}
+
+.player-info-card {
+  font-family: inherit;
+  background-color: rgb(191, 200, 220);
+  box-shadow: 1px 1px 5px rgb(124, 127, 138);
+  border-radius: 5px;
+  text-align: center;
+  height: 11rem;
+  width: 20rem;
+  margin: 1rem;
+  padding: 0.5rem;
+  white-space: nowrap;
+}
+
+#player-one:hover {
+  border: 0px;
+  box-shadow: 1px 1px 8px rgb(81, 93, 127);
+  border-style: ridge;
+}
+
+#player-two:hover {
+  border: 0px;
+  box-shadow: 1px 1px 8px rgb(81, 93, 127);
+  border-style: ridge;
+}
+
+h3 {
+  margin: 1.2rem auto 0.6rem;
+}
+
+.player-name {
+  margin: 0.3rem auto;
+}
+
+.xo {
+  font-size: 2rem;
+  margin: 0.3rem auto 0.4em;
+}
+
+.edit {
+  background-color: transparent;
+  border-color: transparent;
+  color: #4283c5;
+  font-weight: 600;
+  font: inherit;
+}
+
+.edit:hover {
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+#start-btn {
+  font-family: inherit;
+  font-weight: 600;
+  background-color: rgb(128, 147, 201);
+  box-shadow: 1px 1px 5px rgb(124, 127, 138);
+  border: 1px solid;
+  border-radius: 5px;
+  color: white;
+  margin: 0px auto;
+  padding: 0.5rem 1.4rem;
+  display: block;
+}
+
+#start-btn:hover {
+  border: 1px;
+  box-shadow: 1px 1px 8px rgb(81, 93, 127);
+  border-style: ridge;
+}

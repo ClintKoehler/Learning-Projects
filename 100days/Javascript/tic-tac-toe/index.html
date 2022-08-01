@@ -10,7 +10,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style/overlay.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+
     <script src="app.js" defer></script>
     <title>Tic-Tac-Toe</title>
   </head>
@@ -19,41 +21,62 @@
     <p>Built with HTML, CSS, and JavaScript</p>
   </header>
   <body>
-    <div class="game-board">
+    <section class="game-configuration">
       <div id="player-one" class="player-info-card">
-        <h3>Player 1</h3>
-        <h2 id="player-one-name" class="player-name">PLAYER NAME</h2>
+        <h2>Player 1</h2>
+        <h3 id="player-one-name" class="player-name">PLAYER NAME</h3>
         <h2 class="xo">X</h2>
 
-        <div id="player-one-edit" class="edit">Edit</div>
+        <button id="player-one-edit" class="edit">Edit</button>
       </div>
 
       <div id="player-two" class="player-info-card">
-        <h3>Player 2</h3>
-        <h2 id="player-two-name" class="player-name">PLAYER NAME</h2>
+        <h2>Player 2</h2>
+        <h3 id="player-two-name" class="player-name">PLAYER NAME</h3>
         <h2 class="xo">O</h2>
 
-        <div id="player-two-edit" class="edit">Edit</div>
+        <button id="player-two-edit" class="edit">Edit</button>
       </div>
-    </div>
-    <button type="button">Start New Game</button>
-    <div class="game-board"></div>
+    </section>
+    <button id="start-btn" type="button">Start New Game</button>
+
+    <section class="active-game">
+      <article>
+        <h3>You won <span id="winner-name">PLAYER NAME</span> !</h3>
+        <p>Click "Start New Game" above, to start a new game!</p>
+      </article>
+      <p>It's your turn <span id="active-player-name">PLAYER NAME</span>!</p>
+      <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+
+        <li></li>
+        <li></li>
+        <li></li>
+
+        <li></li>
+        <li></li>
+        <li></li>
+      </ol>
+    </section>
 
     <!-- The Modal -->
-    <div id="myModal" class="modal">
+
+    <aside id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
         <form action="">
-          <span class="close"></span>
           <h2>Choose your name</h2>
-          <label for="name">Player Name</label>
-          <input type="text" id="name" name="name" />
+          < action="">
+          <label for="playername">Player Name</label>
+          <input type="text" id="playername" name="username" />
           <div class="modal-buttons">
-            <button id="cancel">Cancel</button>
+            <button type="button" id="cancel">Cancel</button>
             <button type="submit">Submit</button>
           </div>
         </form>
       </div>
-    </div>
+    </aside>
   </body>
 </html>
