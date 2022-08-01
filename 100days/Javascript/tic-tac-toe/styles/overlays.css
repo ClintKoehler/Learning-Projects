@@ -1,12 +1,12 @@
 /* Modal Content/Box */
 /* The Modal (background) */
 
-.modal {
+.modal-backdrop {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -18,7 +18,7 @@
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 40%;
   text-align: center;
   border-radius: 8px;
   box-shadow: 2px 2px 5px rgb(64, 63, 63);
@@ -27,7 +27,8 @@
 .modal-content input {
   display: block;
   margin: 0.8rem auto;
-  width: 15rem;
+  max-width: 20rem;
+  width: 90%;
   font-size: 1rem;
 }
 
@@ -39,21 +40,26 @@
 .modal-buttons {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .modal-buttons button {
   margin: 0.5rem 0.3rem 0.1rem;
   font-family: inherit;
   font-weight: 600;
-  background-color: rgb(128, 147, 201);
   box-shadow: 1px 1px 5px rgb(124, 127, 138);
   border: 1px solid;
   border-radius: 5px;
-  color: white;
   padding: 0.4rem 1.2rem;
+  max-width: 90%;
 }
 
-.modal-buttons #cancel {
+#submit {
+  background-color: rgb(128, 147, 201);
+  color: white;
+}
+
+#cancel {
   background-color: white;
   color: black;
 }
