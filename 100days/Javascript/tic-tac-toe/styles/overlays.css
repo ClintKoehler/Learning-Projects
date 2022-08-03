@@ -69,3 +69,9 @@
   box-shadow: 1px 1px 8px rgb(81, 93, 127);
   padding: 0.4rem 1.3rem;
 }
+
+.error {
+  border-color: rgb(136, 2, 2);
+  color: rgb(136, 2, 2);
+  background-color: rgb(253, 219, 219);
+}

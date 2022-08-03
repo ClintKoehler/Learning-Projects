@@ -4,7 +4,7 @@ const modal = document.getElementById('myModal');
 // Get the button that opens the modal
 const btn = document.getElementById('player-one-edit');
 // Get the <span> element that closes the modal
-const cancel = document.getElementsByClassName('#cancel')[0];
+// const cancel = document.getElementsByClassName('#cancel')[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function () {
