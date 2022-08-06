@@ -92,4 +92,118 @@
 // }
 
 // if (favorite !== 23) console.log('Why not 23?');
-// //? BOOLEAN LOGIC
+// //? SWITCH STATEMENTS
+
+// let day;
+
+// function changeDay() {
+//   for (let i = 0; i < 6; i++)
+//     switch (i) {
+//       case 0:
+//         day = 'monday';
+//         printDay();
+//         break;
+//       case 1:
+//         day = 'tuesday';
+//         printDay();
+//         break;
+//       case 2:
+//         day = 'wednesday';
+//         printDay();
+//         break;
+//       case 3:
+//         day = 'thursday';
+//         printDay();
+//         break;
+//       case 4:
+//         day = 'friday';
+//         printDay();
+//         break;
+//       case 5:
+//         day = 'saturday';
+//         printDay();
+//         break;
+//       case 6:
+//         day = 'sunday';
+//         printDay();
+//         break;
+//     }
+
+//   function printDay() {
+//     switch (day) {
+//       case 'monday':
+//         console.log('Monday');
+//         console.log('Plan course structure');
+//         console.log('Go to coding meetup');
+//         console.log('------');
+//         break;
+//       case 'tuesday':
+//         console.log('Tuesday');
+//         console.log('Prepare theory videos');
+//         console.log('------');
+//         break;
+//       case 'wednesday':
+//       case 'thursday':
+//         console.log('Wednesday and Thursday');
+//         console.log('Write code examples');
+//         console.log('------');
+//         break;
+//       case 'friday':
+//         console.log('Friday');
+//         console.log('Record videos');
+//         console.log('------');
+//       case 'saturday':
+//       case 'sunday':
+//         console.log('Satgurday and Sunday');
+//         console.log('Enjoy the weekend');
+//         console.log('------');
+//         break;
+//       default:
+//         console.log('Not a valid day');
+//     }
+//   }
+// }
+
+// changeDay();
+
+// if (day === 'monday') {
+//   console.log('Plan course structure');
+//   console.log('Go to coding meetup');
+// } else if (day === 'tuesday') {
+//   console.log('Prepare theory videos');
+// } else if (day === 'wednesday' || day === 'thursday') {
+//   console.log('Write code examples');
+// } else if (day === 'friday') {
+//   console.log('Record videos');
+// } else if (day === 'saturday' || day === 'sunday') {
+//   console.log('Enjoy the weekend');
+// } else {
+//   console.log('Not a valid day');
+// }
+// //? TERNARY OPERATOR
+
+// const age = 18;
+// age >= 18 ? console.log('I like to drink wine') : console.log('I like to drink water');
+//! has three parts: condition, if, else
+// const drink = age >= 18 ? 'wine' : 'water';
+// console.log(drink);
+
+//! same as below
+// let drink2;
+// if (age >= 18) {
+//   drink2 = 'wine';
+// } else {
+//   drink2 = 'water';
+// }
+// console.log(drink2);
+
+// console.log(`I like to drink ${age >= 18 ? 'wine' : 'water'}`);
+
+// const bill = 275;
+// const tip = bill >= 50 && bill <= 300 ? (bill * 15) / 100 : (bill * 20) / 100;
+
+// console.log(`The bill value is: ${bill}
+// The recommended tip is: ${tip}
+// The total bill is: ${bill + tip}`);
+
+// //?
