@@ -102,34 +102,33 @@ HINT: To calculate average of 3 values, add them all together and divide by 3
 HINT: To check if number A is at least double number B, check for A >= 2 * B. Apply this to the team's average scores 😉
 GOOD LUCK 😀
 */
-const calcAvgScore = (num1, num2, num3) => Math.round((num1 + num2 + num3) / 3);
 
-const dolphinsAvg = calcAvgScore(97, 112, 101);
-const koalasAvg = calcAvgScore(109, 95, 106);
+// const calcAvg = (num1, num2, num3) => Math.round((num1 + num2 + num3) / 3);
 
-if (dolphinsAvg > koalasAvg && dolphinsAvg >= 100) {
-  console.log(
-    `The Dolphins win with an average score of ${dolphinsAvg} vs the Koalas average score of ${koalasAvg}`
-  );
-} else if (koalasAvg > dolphinsAvg && koalasAvg >= 100) {
-  console.log(
-    `The Koalas win with an average score of ${koalasAvg} vs the Dolphins average score of ${dolphinsAvg}`
-  );
-} else if (
-  dolphinsAvg === koalasAvg &&
-  dolphinsAvg >= 100 &&
-  koalasAvg >= 100
-) {
-  console.log(`The result is a tie with a an average score of ${dolphinsAvg}`);
-} else if (dolphinsAvg === koalasAvg && dolphinsAvg < 100 && koalasAvg < 100) {
-  console.log(
-    `Both teams tied, but both lost since the score of ${dolphinsAvg} is less than the 100 required points!`
-  );
-} else {
-  console.log(
-    `Neither team won since the Dolphins score of ${dolphinsAvg} and the Koalas score of ${koalasAvg} is less than the required 100 points!`
-  );
-}
+// const dolphinsAvg1 = calcAvg(44, 23, 71);
+// const koalasAvg1 = calcAvg(65, 54, 49);
+
+// const dolphinsAvg2 = calcAvg(85, 54, 41);
+// const koalasAvg2 = calcAvg(23, 34, 27);
+
+// function checkWinner(dolphinsAvg, koalasAvg) {
+//   if (dolphinsAvg >= 2 * koalasAvg) {
+//     console.log(
+//       `The Dolphins win with a score of ${dolphinsAvg} vs the Koalas with a score of ${koalasAvg}`
+//     );
+//   } else if (koalasAvg >= 2 * dolphinsAvg) {
+//     console.log(
+//       `The Koalas win with a score of ${koalasAvg} vs the Dolphins with a score of ${dolphinsAvg}`
+//     );
+//   } else {
+//     console.log(`Neither teams wins`);
+//   }
+// }
+
+// checkWinner(dolphinsAvg1, koalasAvg1);
+// console.log('------------------');
+// checkWinner(dolphinsAvg2, koalasAvg2);
+
 /*
 const calcAverage = (a, b, c) => (a + b + c) / 3;
 console.log(calcAverage(3, 4, 5));
