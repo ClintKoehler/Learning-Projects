@@ -83,3 +83,110 @@
 
 // //! arrow function
 // const calcAge = (birthYear) => 2022 - birthYear;
+
+// //? ARRAYS (ARE NOT PRIMITIVE VALUES)
+
+// const friends = ['Michael', 'Steven', 'Peter'];
+// console.log(friends); // literal syntax
+
+// // const years = new Array(1991, 1984, 2008, 2020);
+// // console.log(years[2]);
+
+// console.log(friends.length); // number of elements in array
+// console.log(friends[friends.length - 1]);
+
+// friends[2] = 'Jay'; //replaces
+// console.log('friends', friends);
+
+// const firstName = 'Jonas';
+// const jonas = [firstName, 'Schmedtmann', 2022 - 1991, 'teacher', friends];
+// console.log('jonas', jonas);
+
+// const calcAge = function (birthYear) {
+//   return 2022 - birthYear;
+// };
+
+// const years = [1990, 1967, 2002, 2010, 2018];
+// console.log(calcAge(years)); // NaN
+
+// const age1 = calcAge(years[0]);
+// const age2 = calcAge(years[1]);
+// const age3 = calcAge(years[years.length - 1]);
+// console.log(age1, age2, age3);
+
+// // can place function calls into array elements
+// const ages = [
+//   calcAge(years[0]),
+//   calcAge(years[1]),
+//   calcAge(years[years.length - 1]),
+// ];
+
+// console.log('ages', ages);
+
+// //? METHODS (ARRAY OPERATIONS)
+
+// const friends = ['Michael', 'Steven', 'Peter'];
+
+// //! add elements
+// const newLength = friends.push('Jay'); // append to the end, it also returns the length to the new variable
+// console.log('newLength', newLength);
+// console.log('friends', friends);
+
+// friends.unshift('John');
+// console.log('friends', friends); // adds element to the beginning, also returns the length
+
+// //! remove elements
+// friends.pop(); //removes the last element of array and returns the removed element
+// const popped = friends.pop();
+// console.log('popped', popped);
+// console.log('friends', friends);
+
+// friends.shift(); // removes the first element
+// console.log('friends', friends);
+
+// //!
+// console.log(friends.indexOf('Steven')); // returns the index that steven is located [1]
+// // returns -1 is the element is not there
+
+// console.log(friends.includes('Steven')); // ==> true (strict equality)
+
+// if (friends.includes('Steven')) {
+//   console.log('You have a friend called Steven');
+// }
+
+// //? OBJECTS
+
+// const jonasArray = [
+//   'Jonas',
+//   'Schmedtmann',
+//   2022 - 1991,
+//   'teacher',
+//   ['Micheal', 'Peter', 'Steven'],
+// ];
+
+//! object literal
+// const jonas = {
+//   firstName: 'Jonas',
+//   lastName: 'Schmedtmann',
+//   age: 2022 - 1991,
+//   job: 'teacher',
+//   friends: ['Micheal', 'Peter', 'Steven'],
+// }; // OBJECT jonas has 5 properties here
+
+// //? DOT NOTATION
+
+const jonas = {
+  firstName: 'Jonas',
+  lastName: 'Schmedtmann',
+  age: 2022 - 1991,
+  job: 'teacher',
+  friends: ['Micheal', 'Peter', 'Steven'],
+};
+console.log(jonas.lastName);
+console.log(jonas.friends[1]); // can use any expression including functions
+console.log(jonas['lastName']);
+
+//! does not work with dot notation, only brackets
+const nameKey = 'Name';
+console.log(jonas['first' + nameKey]);
+console.log(jonas['last' + nameKey]);

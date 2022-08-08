@@ -206,4 +206,6 @@
 // The recommended tip is: ${tip}
 // The total bill is: ${bill + tip}`);
 
-// //?
+// //? ARRAYS
+
+X;
