@@ -175,18 +175,84 @@
 
 // //? DOT NOTATION
 
-const jonas = {
-  firstName: 'Jonas',
-  lastName: 'Schmedtmann',
-  age: 2022 - 1991,
-  job: 'teacher',
-  friends: ['Micheal', 'Peter', 'Steven'],
-};
-console.log(jonas.lastName);
-console.log(jonas.friends[1]); // can use any expression including functions
-console.log(jonas['lastName']);
+// const jonas = {
+//   firstName: 'Jonas',
+//   lastName: 'Schmedtmann',
+//   age: 2022 - 1991,
+//   job: 'teacher',
+//   friends: ['Micheal', 'Peter', 'Steven'],
+// };
+// console.log(jonas.lastName);
+// console.log(jonas.friends[1]); // can use any expression including functions
+// console.log(jonas['lastName']);
 
-//! does not work with dot notation, only brackets
-const nameKey = 'Name';
-console.log(jonas['first' + nameKey]);
-console.log(jonas['last' + nameKey]);
+// //! does not work with dot notation, only brackets
+// const nameKey = 'Name';
+// console.log(jonas['first' + nameKey]);
+// console.log(jonas['last' + nameKey]);
+
+// const interestedIn = console.log(
+//   `What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends`
+// );
+
+// if (jonas[interestedIn] > true) {
+//   console.log(jonas[interestedIn]);
+// } else {
+//   console.log(`Please input a legit value`);
+// }
+
+// jonas.location = 'Portugal';
+// jonas['twitter'] = '@jonasschmedtman';
+// console.log(jonas);
+
+// console.log(
+//   `${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}.`
+// );
+
+// //? OBJECT METHODS
+
+// const jonas = {
+//   firstName: 'Jonas',
+//   lastName: 'Schmedtmann',
+//   birthYear: 1991,
+//   job: 'teacher',
+//   friends: ['Micheal', 'Peter', 'Steven'],
+//   hasDriversLicense: true,
+//! any function attached to an object is a method
+//! value is passed in externally
+// calcAge: function (birthYear) {
+//   return 2022 - birthYear;
+// },
+//! use 'this' to access object
+// calcAge: function () {
+//   console.log(this);
+//   return 2022 - this.birthYear;
+// },
+//! calculate and store the result
+/*
+  calcAge: function () {
+    this.age = 2022 - this.birthYear;
+    return this.age;
+  },
+
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()}-year-old ${
+      this.job
+    }, and he ${
+      this.hasDriversLicense
+ /       ? 'has a drivers license'
+        : 'has no drivers license'
+    }.`;
+  },
+};
+
+// console.log(jonas.calcAge(1980));
+// console.log(jonas['calcAge'](1990));
+// console.log(jonas.calcAge(jonas.birthYear));
+console.log(jonas.calcAge());
+console.log(jonas.age);
+
+console.log(jonas.getSummary());
+*/
+
+// //? ITERATION FOR LOOPS
