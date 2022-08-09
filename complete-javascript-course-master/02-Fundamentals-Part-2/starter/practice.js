@@ -256,3 +256,57 @@ console.log(jonas.getSummary());
 */
 
 // //? ITERATION FOR LOOPS
+
+// for (let i = 1; i <= 10; i++) {
+//   console.log(`Lifting weights repetition ${i} 🏋️`);
+// }
+
+// //? LOOP THROUGH ARRAYS
+
+// const jonas = [
+//   'Jonas',
+//   'Schmedtmann',
+//   2022 - 1991,
+//   'teacher',
+//   ['Micheal', 'Peter', 'Steven'],
+//   true,
+// ];
+
+// const types = [];
+
+// for (let i = 0; i < jonas.length; i++) {
+//   //! reading array
+//   console.log(jonas[i], typeof jonas[i]);
+
+//   //! filling types array
+//   // types[i] = typeof jonas[i];
+//   types.push(typeof jonas[i]);
+// }
+
+// console.log(types);
+
+// const years = [1991, 2007, 1969, 2020];
+// const ages = [];
+
+// for (let i = 0; i < years.length; i++) {
+//   ages.push(2022 - years[i]);
+// }
+
+// console.log(ages);
+
+// // //? CONTINUE AND BREAK
+// //! continue exits current iteration, starts new
+// console.log('---- ONLY STRING ----');
+// for (let i = 0; i < jonas.length; i++) {
+//   if (typeof jonas[i] !== 'string') continue;
+//   console.log(jonas[i], typeof jonas[i]);
+// }
+
+// //! break
+// console.log('---- BREAK WITH NUMBER ----');
+// for (let i = 0; i < jonas.length; i++) {
+//   if (typeof jonas[i] === 'number') break;
+//   console.log(jonas[i], typeof jonas[i]);
+// }
+
+// //? LOOPING BACKWARDS AND LOOPS IN LOOPS
