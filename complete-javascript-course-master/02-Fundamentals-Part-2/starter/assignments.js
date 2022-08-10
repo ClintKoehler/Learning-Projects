@@ -77,46 +77,42 @@
 // console.log(myCountry);
 //! //////////////////////////////////////////////////
 
-// for (let i = 1; i < 51; i++) {
-//   console.log(`Voter number ${i} is currently voting`);
+// const populations = [84, 125, 83, 10];
+// const percentages = [];
+
+// function percentageOfWorld1(arr) {
+//   return (arr / 7900) * 100;
 // }
 
-const populations = [84, 125, 83, 10];
-const percentages = [];
+// for (let i = 0; i < populations.length; i++) {
+//   const percentage = percentageOfWorld1(populations[i]).toFixed(2);
+//   percentages.push(percentage);
+// }
 
-function percentageOfWorld1(arr) {
-  return (arr / 7900) * 100;
-}
+// console.log(percentages);
 
-for (let i = 0; i < populations.length; i++) {
-  const percentage = percentageOfWorld1(populations[i]).toFixed(2);
-  percentages.push(percentage);
-}
+// console.log(`-------------`);
 
-console.log(percentages);
+// const listOfNeighbours = [
+//   ['Canada', 'Mexico'],
+//   ['Spain'],
+//   ['Norway', 'Sweden', 'Russia'],
+// ];
 
-console.log(`-------------`);
+// for (let i = 0; i < listOfNeighbours.length; i++)
+//   for (let y = 0; y < listOfNeighbours[i].length; y++)
+//     console.log(`Neighbor: ${listOfNeighbours[i][y]}`);
 
-const listOfNeighbours = [
-  ['Canada', 'Mexico'],
-  ['Spain'],
-  ['Norway', 'Sweden', 'Russia'],
-];
+// console.log(`-------------`);
 
-for (let i = 0; i < listOfNeighbours.length; i++)
-  for (let y = 0; y < listOfNeighbours[i].length; y++)
-    console.log(`Neighbor: ${listOfNeighbours[i][y]}`);
+// const populations2 = [84, 125, 83, 10];
+// const percentages2 = [];
 
-console.log(`-------------`);
+// let i = 0;
+// while (i < populations2.length) {
+//   const percentage = percentageOfWorld1(populations2[i]).toFixed(2);
+//   percentages2.push(percentage);
+//   i++;
+// }
 
-const populations2 = [84, 125, 83, 10];
-const percentages2 = [];
-
-let i = 0;
-while (i < populations2.length) {
-  const percentage = percentageOfWorld1(populations2[i]).toFixed(2);
-  percentages2.push(percentage);
-  i++;
-}
-
-console.log(percentages2);
+// console.log(percentages2);
