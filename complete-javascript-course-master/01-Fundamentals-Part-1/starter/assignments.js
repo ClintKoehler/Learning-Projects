@@ -85,19 +85,19 @@
 
 //! ///////////////////PART 2//////////////////////
 
-function describeCountry(country, population, capitalCity) {
-  return `${country} has ${population} people and its capital city is ${capitalCity}`;
-}
+// function describeCountry(country, population, capitalCity) {
+//   return `${country} has ${population} people and its capital city is ${capitalCity}`;
+// }
 
-const turkey = describeCountry('Turkey', '84 Million', 'Istanbul');
-const japan = describeCountry('Japan', '125 Million', 'Tokyo');
-const germany = describeCountry('Germany', '83 Million', 'Berlin');
+// const turkey = describeCountry('Turkey', '84 Million', 'Istanbul');
+// const japan = describeCountry('Japan', '125 Million', 'Tokyo');
+// const germany = describeCountry('Germany', '83 Million', 'Berlin');
 
-console.log(`${turkey}
---------
-${japan}
---------
-${germany}`);
+// console.log(`${turkey}
+// --------
+// ${japan}
+// --------
+// ${germany}`);
 
 // const percentageOfWorld2 = function (population) {
 //   return (population / 7900) * 100;
