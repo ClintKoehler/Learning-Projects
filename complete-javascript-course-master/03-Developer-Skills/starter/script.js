@@ -50,11 +50,15 @@
 const data1 = [17, 21, 23];
 const data2 = [12, 5, -5, 0, 4];
 
+let printString = '';
+
 const printForecast = function (arr) {
+  let printString = '';
   for (let i = 0; i < arr.length; i++) {
-    console.log(`${arr[i]} degrees C in ${i + 1} days`);
+    printString += `...${arr[i]}°C in ${i + 1} days`;
   }
-  console.log('--------');
+  printString += '...';
+  console.log(printString);
 };
 
 printForecast(data1);
