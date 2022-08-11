@@ -1,5 +1,6 @@
 {
   "javascript.format.semicolons": "insert",
   "typescript.format.semicolons": "insert",
-  "turboConsoleLog.addSemicolonInTheEnd": true
+  "turboConsoleLog.addSemicolonInTheEnd": true,
+  "autoHide.autoHidePanel": false
 }
