@@ -1,5 +1,7 @@
 'use strict';
 
+//? THIS IS THE FIRST GAME THAT I CODED THE JS LOGIC COMPLETELY ON MY OWN!
+
 let currentPlayer = 0;
 let currentScoreP0 = 0;
 let currentScoreP1 = 0;
@@ -16,6 +18,7 @@ function newGame() {
   document.getElementById('score--1').textContent = 0;
   document.getElementById('current--0').textContent = 0;
   document.getElementById('current--1').textContent = 0;
+  focusP0();
   currentPlayer = 0;
   currentScoreP0 = 0;
   currentScoreP1 = 0;
@@ -41,6 +44,7 @@ function playGameP0() {
   console.log('player', currentPlayer);
   if (diceRoll === 1) {
     currentScoreP0 = 0;
+    focusP1();
     document.getElementById('current--0').textContent = 0;
     currentPlayer = 1;
     return;
@@ -57,6 +61,7 @@ function playGameP1() {
   console.log('player', currentPlayer);
   if (diceRoll === 1) {
     currentScoreP1 = 0;
+    focusP0();
     document.getElementById('current--1').textContent = 0;
     currentPlayer = 0;
     return;
@@ -69,15 +74,18 @@ function playGameP1() {
 
 function hold() {
   if (currentPlayer === 0) {
-    totalScoreP0 = 100;
+    totalScoreP0 += currentScoreP0;
     currentScoreP0 = 0;
     document.getElementById('current--0').textContent = 0;
     document.getElementById('score--0').textContent = totalScoreP0;
     currentPlayer = 1;
+    if (totalScoreP0 < 100) focusP1();
     if (totalScoreP0 >= 100) player0Wins();
   } else if (currentPlayer === 1) {
     totalScoreP1 += currentScoreP1;
     currentScoreP1 = 0;
+    if (totalScoreP1 < 100) focusP0();
+    if (totalScoreP1 < 100) focusP0();
     document.getElementById('current--1').textContent = 0;
     document.getElementById('score--1').textContent = totalScoreP1;
     currentPlayer = 0;
@@ -88,7 +96,6 @@ function hold() {
 function player0Wins() {
   document.getElementById('current--0').textContent = 'YOU WON!';
   document.getElementById('current--1').textContent = 'YOU LOSE!';
-  document.getElementsByClassName('.current-label').textContent = 's';
   currentPlayer = 2;
   return;
 }
@@ -99,4 +106,14 @@ function player1Wins() {
   document.querySelectorAll('.current-label').textContent = '';
   currentPlayer = 2;
   return;
+}
+
+function focusP0() {
+  document.querySelector('.player--1').classList.remove('player--active');
+  document.querySelector('.player--0').classList.add('player--active');
+}
+
+function focusP1() {
+  document.querySelector('.player--0').classList.remove('player--active');
+  document.querySelector('.player--1').classList.add('player--active');
 }
