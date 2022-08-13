@@ -2,10 +2,9 @@
 
 let currentPlayer = 1;
 let currentScoreP1 = 0;
-let currentScoreP2 = 1;
+let currentScoreP2 = 0;
 let totalScorep1 = 0;
 let totalScorep2 = 0;
-let turn = 0;
 
 document.querySelector('.btn--new').addEventListener('click', newGame);
 
@@ -14,6 +13,11 @@ function newGame() {
   document.getElementById('score--1').textContent = 0;
   document.getElementById('current--0').textContent = 0;
   document.getElementById('current--1').textContent = 0;
+  currentPlayer = 1;
+  currentScoreP1 = 0;
+  currentScoreP2 = 0;
+  totalScorep1 = 0;
+  totalScorep2 = 0;
 }
 
 document.querySelector('.btn--roll').addEventListener('click', rollDice);
