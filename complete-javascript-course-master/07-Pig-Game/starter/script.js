@@ -40,8 +40,7 @@ function rollDice() {
 
 function playGameP0() {
   let diceRoll = Math.trunc(Math.random() * 6 + 1);
-  console.log(diceRoll);
-  console.log('player', currentPlayer);
+  document.querySelector('.dice').src = `dice-${diceRoll}.png`;
   if (diceRoll === 1) {
     currentScoreP0 = 0;
     focusP1();
@@ -57,8 +56,7 @@ function playGameP0() {
 
 function playGameP1() {
   let diceRoll = Math.trunc(Math.random() * 6 + 1);
-  console.log(diceRoll);
-  console.log('player', currentPlayer);
+  document.querySelector('.dice').src = `dice-${diceRoll}.png`;
   if (diceRoll === 1) {
     currentScoreP1 = 0;
     focusP0();
@@ -103,7 +101,6 @@ function player0Wins() {
 function player1Wins() {
   document.getElementById('current--1').textContent = 'YOU WON!';
   document.getElementById('current--0').textContent = 'YOU LOSE!';
-  document.querySelectorAll('.current-label').textContent = '';
   currentPlayer = 2;
   return;
 }
