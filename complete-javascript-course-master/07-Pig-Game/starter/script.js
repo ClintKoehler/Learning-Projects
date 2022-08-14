@@ -2,6 +2,7 @@
 
 //? THIS IS THE FIRST GAME THAT I CODED THE JS LOGIC COMPLETELY ON MY OWN!
 
+// Starting conditions
 let currentPlayer = 0;
 let currentScoreP0 = 0;
 let currentScoreP1 = 0;
@@ -9,10 +10,12 @@ let totalScoreP0 = 0;
 let totalScoreP1 = 0;
 let turn = 0;
 
+// Three buttons with event listeners
 document.querySelector('.btn--new').addEventListener('click', newGame);
 document.querySelector('.btn--roll').addEventListener('click', rollDice);
 document.querySelector('.btn--hold').addEventListener('click', hold);
 
+// Reset game logic
 function newGame() {
   document.getElementById('score--0').textContent = 0;
   document.getElementById('score--1').textContent = 0;
@@ -27,6 +30,7 @@ function newGame() {
   turn = 1;
 }
 
+// Game logic
 function rollDice() {
   if (turn === 0) {
     newGame();
@@ -91,6 +95,7 @@ function hold() {
   }
 }
 
+// Score logic
 function player0Wins() {
   document.getElementById('current--0').textContent = 'YOU WON!';
   document.getElementById('current--1').textContent = 'YOU LOSE!';
