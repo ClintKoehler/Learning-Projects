@@ -122,7 +122,7 @@ function player1Wins() {
   return;
 }
 
-// Turn logic
+// CSS turn logic
 function focusP0() {
   document.querySelector('.player--1').classList.remove('player--active');
   document.querySelector('.player--0').classList.add('player--active');
