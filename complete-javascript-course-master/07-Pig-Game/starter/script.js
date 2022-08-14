@@ -9,6 +9,7 @@ let currentScoreP1 = 0;
 let totalScoreP0 = 0;
 let totalScoreP1 = 0;
 let turn = 0;
+let diceRoll;
 
 // Three buttons with event listeners
 document.querySelector('.btn--new').addEventListener('click', newGame);
@@ -42,9 +43,13 @@ function rollDice() {
   } else return;
 }
 
-function playGameP0() {
-  let diceRoll = Math.trunc(Math.random() * 6 + 1);
+function calcDiceRoll() {
+  diceRoll = Math.trunc(Math.random() * 6 + 1);
   document.querySelector('.dice').src = `dice-${diceRoll}.png`;
+}
+
+function playGameP0() {
+  calcDiceRoll();
   if (diceRoll === 1) {
     currentScoreP0 = 0;
     focusP1();
@@ -59,8 +64,7 @@ function playGameP0() {
 }
 
 function playGameP1() {
-  let diceRoll = Math.trunc(Math.random() * 6 + 1);
-  document.querySelector('.dice').src = `dice-${diceRoll}.png`;
+  calcDiceRoll();
   if (diceRoll === 1) {
     currentScoreP1 = 0;
     focusP0();
