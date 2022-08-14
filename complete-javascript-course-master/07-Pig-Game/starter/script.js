@@ -22,6 +22,8 @@ function newGame() {
   document.getElementById('score--1').textContent = 0;
   document.getElementById('current--0').textContent = 0;
   document.getElementById('current--1').textContent = 0;
+  document.querySelector('.player--0').classList.remove('player--winner');
+  document.querySelector('.player--1').classList.remove('player--winner');
   focusP0();
   currentPlayer = 0;
   currentScoreP0 = 0;
@@ -50,6 +52,7 @@ function calcDiceRoll() {
 
 function playGameP0() {
   calcDiceRoll();
+  document.querySelector('.dice').style.display = 'block';
   if (diceRoll === 1) {
     currentScoreP0 = 0;
     focusP1();
@@ -65,6 +68,7 @@ function playGameP0() {
 
 function playGameP1() {
   calcDiceRoll();
+  document.querySelector('.dice').style.display = 'block';
   if (diceRoll === 1) {
     currentScoreP1 = 0;
     focusP0();
@@ -86,7 +90,7 @@ function hold() {
     document.getElementById('score--0').textContent = totalScoreP0;
     currentPlayer = 1;
     if (totalScoreP0 < 100) focusP1();
-    if (totalScoreP0 >= 100) player0Wins();
+    if (totalScoreP0 >= 10) player0Wins();
   } else if (currentPlayer === 1) {
     totalScoreP1 += currentScoreP1;
     currentScoreP1 = 0;
@@ -99,10 +103,12 @@ function hold() {
   }
 }
 
-// Score logic
+// Win/Lose logic
 function player0Wins() {
   document.getElementById('current--0').textContent = 'YOU WON!';
   document.getElementById('current--1').textContent = 'YOU LOSE!';
+  document.querySelector('.player--0').classList.add('player--winner');
+  document.querySelector('.dice').style.display = 'none';
   currentPlayer = 2;
   return;
 }
@@ -110,10 +116,13 @@ function player0Wins() {
 function player1Wins() {
   document.getElementById('current--1').textContent = 'YOU WON!';
   document.getElementById('current--0').textContent = 'YOU LOSE!';
+  document.querySelector('.player--1').classList.add('player--winner');
+  document.querySelector('.dice').style.display = 'none';
   currentPlayer = 2;
   return;
 }
 
+// Turn logic
 function focusP0() {
   document.querySelector('.player--1').classList.remove('player--active');
   document.querySelector('.player--0').classList.add('player--active');
