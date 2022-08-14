@@ -90,7 +90,7 @@ function hold() {
     document.getElementById('score--0').textContent = totalScoreP0;
     currentPlayer = 1;
     if (totalScoreP0 < 100) focusP1();
-    if (totalScoreP0 >= 10) player0Wins();
+    if (totalScoreP0 >= 100) player0Wins();
   } else if (currentPlayer === 1) {
     totalScoreP1 += currentScoreP1;
     currentScoreP1 = 0;
