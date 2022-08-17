@@ -51,45 +51,114 @@ const restaurant = {
   },
 };
 
+//? OR assignment operator
+const rest1 = {
+  name: 'Capri',
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+// Below is the same as what is above
+// rest1.numGuests ||= 10; // Use ?? to make the 0 work
+rest1.numGuests ??= 10;
+rest2.numGuests ||= 10;
+
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner = rest2.owner && '<ANONYMOUS>';
+
+console.log(rest1);
+console.log(rest2);
+
+//! KNOWLEDGE COALESCING OPERATOR
+
+// restaurant.numGuests = 0;
+
+// const guests = restaurant.numGuests || 10;
+// console.log(guests);
+
+// // Nullish: null and undefined (Not 0 or '')
+// const guestCorrect = restaurant.numGuests ?? 10;
+// console.log(guestCorrect);
+
+//! SHORT CIRCUIT
+
+// console.log('-------- OR -------');
+
+// // Use ANY data type, return ANY data type, short circuiting... Returns the first truthy value
+// console.log(3 || 'Jonas');
+// console.log('' || 'Jonas');
+// console.log(true || 0);
+// console.log(undefined || null);
+
+// console.log(undefined || 0 || '' || 'Hello' || '23' || null); // ==> Hello
+
+// // The 2 examples below will not work if numGuests is 0
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1);
+
+// const guests2 = restaurant.numGuests || 20;
+// console.log(guests2);
+
+// console.log('-------- AND -------');
+
+// // Short circuits when the first value is falsey
+// console.log(0 && 'Jonas');
+// // If all are true it returns the last value
+// console.log(7 && 'Jonas');
+
+// console.log('Hello' && 23 && null && 'Jonas'); // null
+
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('mushrooms', 'spinach');
+// }
+
+// restaurant.orderPizza && restaurant.orderPizza('Apples', 'Oranges');
+
 //! DESTRUCTURING
 
 //? Spread because on right side of =
 // SPREAD = EXPAND
-const arr = [1, 2, ...[3, 4]]; // [1, 2, 3, 4]
+// const arr = [1, 2, ...[3, 4]]; // [1, 2, 3, 4]
 
 //? Rest syntax becayse on the left side of =
 // REST = COMPRESS
-const [a, b, ...others] = [1, 2, 3, 4, 5];
-console.log(a, b, others);
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, others);
 
 // rest must be the last element
-const [pizza, , risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
-console.log(pizza, risotto, otherFood);
+// const [pizza, , risotto, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(pizza, risotto, otherFood);
 
 //? Objects
-const { sat, ...weekdays } = restaurant.openingHours;
-console.log(weekdays);
+// const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(weekdays);
 
 //! FUNCTIONS
 
-const add = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
-  console.log(sum);
-};
+// const add = function (...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// };
 
-add(2, 3);
-add(5, 3, 7, 2);
-add(8, 2, 5, 3, 2, 1, 4);
+// add(2, 3);
+// add(5, 3, 7, 2);
+// add(8, 2, 5, 3, 2, 1, 4);
 
-const x = [123, 5, 7];
-add(...x);
+// const x = [123, 5, 7];
+// add(...x);
 
-restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach ');
-restaurant.orderPizza('mushrooms');
+// restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach ');
+// restaurant.orderPizza('mushrooms');
 
 // Bad way to add to an array
 // const arr = [7, 8, 9];
