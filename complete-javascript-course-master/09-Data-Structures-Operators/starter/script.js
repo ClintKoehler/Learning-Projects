@@ -52,28 +52,28 @@ const restaurant = {
 };
 
 //? OR assignment operator
-const rest1 = {
-  name: 'Capri',
-  numGuests: 0,
-};
+// const rest1 = {
+//   name: 'Capri',
+//   numGuests: 0,
+// };
 
-const rest2 = {
-  name: 'La Piazza',
-  owner: 'Giovanni Rossi',
-};
+// const rest2 = {
+//   name: 'La Piazza',
+//   owner: 'Giovanni Rossi',
+// };
 
 // rest1.numGuests = rest1.numGuests || 10;
 // rest2.numGuests = rest2.numGuests || 10;
 // Below is the same as what is above
 // rest1.numGuests ||= 10; // Use ?? to make the 0 work
-rest1.numGuests ??= 10;
-rest2.numGuests ||= 10;
+// rest1.numGuests ??= 10;
+// rest2.numGuests ||= 10;
 
-rest1.owner &&= '<ANONYMOUS>';
-rest2.owner = rest2.owner && '<ANONYMOUS>';
+// rest1.owner &&= '<ANONYMOUS>';
+// rest2.owner = rest2.owner && '<ANONYMOUS>';
 
-console.log(rest1);
-console.log(rest2);
+// console.log(rest1);
+// console.log(rest2);
 
 //! KNOWLEDGE COALESCING OPERATOR
 
@@ -82,7 +82,7 @@ console.log(rest2);
 // const guests = restaurant.numGuests || 10;
 // console.log(guests);
 
-// // Nullish: null and undefined (Not 0 or '')
+//? Nullish: null and undefined (Not 0 or '')
 // const guestCorrect = restaurant.numGuests ?? 10;
 // console.log(guestCorrect);
 
@@ -90,7 +90,7 @@ console.log(rest2);
 
 // console.log('-------- OR -------');
 
-// // Use ANY data type, return ANY data type, short circuiting... Returns the first truthy value
+//? Use ANY data type, return ANY data type, short circuiting... Returns the first truthy value
 // console.log(3 || 'Jonas');
 // console.log('' || 'Jonas');
 // console.log(true || 0);
@@ -98,7 +98,7 @@ console.log(rest2);
 
 // console.log(undefined || 0 || '' || 'Hello' || '23' || null); // ==> Hello
 
-// // The 2 examples below will not work if numGuests is 0
+//? The 2 examples below will not work if numGuests is 0
 // const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
 // console.log(guests1);
 
@@ -107,9 +107,9 @@ console.log(rest2);
 
 // console.log('-------- AND -------');
 
-// // Short circuits when the first value is falsey
+// //?  Short circuits when the first value is falsey
 // console.log(0 && 'Jonas');
-// // If all are true it returns the last value
+//? If all are true it returns the last value
 // console.log(7 && 'Jonas');
 
 // console.log('Hello' && 23 && null && 'Jonas'); // null
@@ -123,11 +123,11 @@ console.log(rest2);
 //! DESTRUCTURING
 
 //? Spread because on right side of =
-// SPREAD = EXPAND
+//? SPREAD = EXPAND
 // const arr = [1, 2, ...[3, 4]]; // [1, 2, 3, 4]
 
 //? Rest syntax becayse on the left side of =
-// REST = COMPRESS
+//? REST = COMPRESS
 // const [a, b, ...others] = [1, 2, 3, 4, 5];
 // console.log(a, b, others);
 
@@ -160,18 +160,18 @@ console.log(rest2);
 // restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach ');
 // restaurant.orderPizza('mushrooms');
 
-// Bad way to add to an array
+//? Bad way to add to an array
 // const arr = [7, 8, 9];
 // const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
 // console.log(badNewArr);
 
-// Good way to add to an aray with spread operator
+//? Good way to add to an aray with spread operator
 // const newArr = [1, 2, ...arr];
 // console.log(newArr);
 
 // console.log(...newArr);
 
-// This builds a new array
+//? This builds a new array
 // const newMenu = [...restaurant.mainMenu, 'Gnocchi'];
 // console.log(newMenu);
 
@@ -182,7 +182,7 @@ console.log(rest2);
 // const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 // console.log(menu);
 
-// // Iterables: arrays, strings, maps, sets. NOT objects
+//? Iterables: arrays, strings, maps, sets. NOT objects
 // const str = 'Jonas';
 // const letters = [...str, ' ', 'S.'];
 // console.log(letters);
@@ -276,8 +276,8 @@ console.log(rest2);
 
 // //? Nested destructuring
 // const nested = [2, 4, [5, 6]];
-// // const [i, , j] = nested;
-// // console.log(i, j);
+//? const [i, , j] = nested;
+//? console.log(i, j);
 // const [i, , [j, k]] = nested;
 // console.log(i, j, k);
 
