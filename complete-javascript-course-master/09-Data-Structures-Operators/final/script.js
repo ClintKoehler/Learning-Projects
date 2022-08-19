@@ -694,7 +694,7 @@ const {
 console.log(team1, draw, team2);
 
 const printGoals = function (...players) {
-  console.log(players);
+  console.log(...players);
   console.log(`${players.length} goals were scored`);
 };
 
