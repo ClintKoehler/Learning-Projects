@@ -62,29 +62,101 @@ const restaurant = {
   },
 };
 
+//? MAPS (map values to keys) (keys can have any type vs objects with keys that are strings)
+const rest = new Map();
+//? Add to map
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+rest.set(2, 'Lisbon, Portugal');
+console.log(rest);
+//? Chain
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open')
+  .set(false, 'We are closed');
+
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 8;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+console.log(rest.has('categories'));
+rest.delete(2);
+//! delete everything
+// rest.clear();
+//! to add an array as key and retrieve it
+const arr = [1, 2];
+rest.set(arr, 'Test');
+console.log(rest);
+console.log(rest.size);
+console.log(rest.get(arr));
+
+//? SETS (Removes duplicates) (Iterable)
+//! Cannot retrieve data from a set, use arrays instead
+//! Best when you need to work with unique values
+// const ordersSet = new Set([
+//   'Pasta',
+//   'Pizza',
+//   'Pizza',
+//   'Risotto',
+//   'Pasta',
+//   'Pizza',
+// ]);
+// console.log(ordersSet);
+
+//? strings are also iterables
+// console.log(new Set('Jonas'));
+
+// console.log(ordersSet.size);
+// console.log(ordersSet.has('Pizza'));
+// console.log(ordersSet.has('Bread'));
+// ordersSet.add('Garlic Bread');
+// ordersSet.add('Garlic Bread');
+// ordersSet.delete('Risotto');
+// // ordersSet.clear();
+// console.log(ordersSet);
+
+// for (const order of ordersSet) console.log(order);
+
+//example
+// const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+// console.log(staff);
+// const staffUnique = [...new Set(staff)];
+// console.log(staffUnique);
+// //! Find the size of a set
+// console.log(
+//   new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+// );
+
+// console.log(new Set('ClintKoehler').size);
+
 //? Property NAMES
 //? (remember) property names = keys
-const properties = Object.keys(openingHours);
-console.log(properties);
+// const properties = Object.keys(openingHours);
+// console.log(properties);
 
-let openStr = `We are open on ${properties.length} days: `;
-for (const day of properties) {
-  openStr += `${day} `;
-}
-console.log(openStr);
+// let openStr = `We are open on ${properties.length} days: `;
+// for (const day of properties) {
+//   openStr += `${day} `;
+// }
+// console.log(openStr);
 
 //? Property VALUES
-const values = Object.values(openingHours);
-console.log(values);
+// const values = Object.values(openingHours);
+// console.log(values);
 
 //? ENTRIES return the index number AND elements
 //? Entire object
-const entries = Object.entries(openingHours);
+// const entries = Object.entries(openingHours);
 // console.log(entries);
 
-for (const [key, { open, close }] of entries) {
-  console.log(`On ${key} we open at ${open} and close at ${close}`);
-}
+// for (const [key, { open, close }] of entries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// }
 
 //? Optional chaining
 //? WITHOUT optional chaining
@@ -121,13 +193,13 @@ for (const [key, { open, close }] of entries) {
 // console.log(users[0]?.name ?? 'User array empty');
 
 //? FOR OF LOOPS
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-for (const item of menu) console.log(item);
+// for (const item of menu) console.log(item);
 
-for (const [i, el] of menu.entries()) {
-  console.log(`${i + 1}: ${el}`);
-}
+// for (const [i, el] of menu.entries()) {
+//   console.log(`${i + 1}: ${el}`);
+// }
 
 //? OR assignment operator
 // const rest1 = {
