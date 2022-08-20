@@ -121,13 +121,13 @@ for (const [key, { open, close }] of entries) {
 // console.log(users[0]?.name ?? 'User array empty');
 
 //? FOR OF LOOPS
-// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-// for (const item of menu) console.log(item);
+for (const item of menu) console.log(item);
 
-// for (const [i, el] of menu.entries()) {
-//   console.log(`${i + 1}: ${el}`);
-// }
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
 
 //? OR assignment operator
 // const rest1 = {
