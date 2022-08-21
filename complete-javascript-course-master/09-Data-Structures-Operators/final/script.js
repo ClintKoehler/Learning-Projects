@@ -297,44 +297,36 @@ Let's continue with our football betting app! This time, we have a map with a lo
 GOOD LUCK 😀
 */
 
-// const gameEvents = new Map([
-//   [17, '⚽️ GOAL'],
-//   [36, '🔁 Substitution'],
-//   [47, '⚽️ GOAL'],
-//   [61, '🔁 Substitution'],
-//   [64, '🔶 Yellow card'],
-//   [69, '🔴 Red card'],
-//   [70, '🔁 Substitution'],
-//   [72, '🔁 Substitution'],
-//   [76, '⚽️ GOAL'],
-//   [80, '⚽️ GOAL'],
-//   [92, '🔶 Yellow card'],
-// ]);
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
 
-/*
-// 1.
+console.log(gameEvents);
+
 const events = [...new Set(gameEvents.values())];
 console.log(events);
 
-// 2.
 gameEvents.delete(64);
+console.log(gameEvents);
 
-// 3.
 console.log(
-  `An event happened, on average, every ${90 / gameEvents.size} minutes`
-);
-const time = [...gameEvents.keys()].pop();
-console.log(time);
-console.log(
-  `An event happened, on average, every ${time / gameEvents.size} minutes`
+  `An event happened, on average, every ${92 / gameEvents.size} minutes`
 );
 
-// 4.
-for (const [min, event] of gameEvents) {
-  const half = min <= 45 ? 'FIRST' : 'SECOND';
-  console.log(`[${half} HALF] ${min}: ${event}`);
+for (const [key, value] of gameEvents) {
+  const half = key <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF] ${key} ${value}`);
 }
-*/
 
 /*
 ///////////////////////////////////////
@@ -509,26 +501,26 @@ const game = {
   },
 };
 
-for (const [goalNumber, name] of game.scored.entries())
-  console.log(`Goal ${goalNumber + 1}: ${name}`);
+// for (const [goalNumber, name] of game.scored.entries())
+//   console.log(`Goal ${goalNumber + 1}: ${name}`);
 
-const odds = Object.values(game.odds);
-let average = 0;
+// const odds = Object.values(game.odds);
+// let average = 0;
 
-for (const odd of odds) average += odd;
-average /= odds.length;
-console.log(average);
+// for (const odd of odds) average += odd;
+// average /= odds.length;
+// console.log(average);
 
-for (const [team, odd] of Object.entries(game.odds)) {
-  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
-  console.log(`Odd of ${teamStr} ${odd}`);
-}
+// for (const [team, odd] of Object.entries(game.odds)) {
+//   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+//   console.log(`Odd of ${teamStr} ${odd}`);
+// }
 
-const scorers = {};
-for (const player of game.scored) {
-  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
-}
-console.log(scorers);
+// const scorers = {};
+// for (const player of game.scored) {
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// }
+// console.log(scorers);
 
 /*
 // BONUS
