@@ -311,7 +311,7 @@ const gameEvents = new Map([
   [92, '🔶 Yellow card'],
 ]);
 
-console.log(gameEvents);
+console.log(gameEvents.values());
 
 const events = [...new Set(gameEvents.values())];
 console.log(events);
