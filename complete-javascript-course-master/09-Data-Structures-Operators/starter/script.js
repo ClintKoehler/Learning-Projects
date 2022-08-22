@@ -12,11 +12,6 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  //? Method (this one takes 2 indexes)
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-
   //? Objects inside of objects, which is inside the restaurant object
   openingHours: {
     thu: {
@@ -32,39 +27,91 @@ const restaurant = {
       close: 24,
     },
   },
+
+  //? Method (this one takes 2 indexes)
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  //? The objects is immediatley destructured
+  //? Arguments need to match, but order does not matter
+  //? We also set default values if property is not passed in
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = '20:00',
+    address,
+  }) {
+    console.log(
+      `Order Received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 };
+
+//! /////////////SPREAD OPERATOR//////////////////
+//! //////////////////////////////////////////////
+//? Only used where values are seperated by commas
+
+const arr = [7, 8, 9];
+//? Bad way to add to array
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr); //* ==> [1, 2, 7, 8, 9]
+
+//? Good way to add to array
+const goodNewArr = [1, 2, ...arr];
+console.log(goodNewArr); //* ==> [1, 2, 7, 8, 9]
+console.log(...goodNewArr); //* ==> 1 2 7 8 9
+//? If you just added the array
+const newArr = [1, 2, arr];
+console.log(newArr); //* ==> [1, 2, Array(3)]
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu); //* ==> Adds 'Gnocci' to newMenu array with all mainMenu items
 
 //! /////////////DESTRUCTURING OBJECTS//////////////////
 //! ////////////////////////////////////////////////////
-//? Destructure object using curly braces {}
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories); //* ==> all that info from the object
+// //? Destructure object using curly braces {}
+// const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories); //* ==> all that info from the object
 
-//? Have different variable names than the property names
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags); //* ==> the same as example above, but with new variable names
+// //? Have different variable names than the property names
+// const {
+//   name: restaurantName,
+//   openingHours: hours,
+//   categories: tags,
+// } = restaurant;
+// console.log(restaurantName, hours, tags); //* ==> the same as example above, but with new variable names
 
-//? Setting DEFAULT values (set to empty array bellow)
-//? Very helpful when getting data from API's
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters); //* ==> [], [everything in starterMenu]
+// //? Setting DEFAULT values (set to empty array bellow)
+// //? Very helpful when getting data from API's
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu, starters); //* ==> [], [everything in starterMenu]
 
-//? MUTATING variables while destructuring objects
-let a = 111;
-let b = 999;
-const obj = { a: 23, b: 7, c: 14 };
+// //? MUTATING variables while destructuring objects
+// let a = 111;
+// let b = 999;
+// const obj = { a: 23, b: 7, c: 14 };
 
-// {a, b} = obj; //* ==> Unexpected token
-({ a, b } = obj);
-console.log(a, b); //* ==> 23 7
+// // {a, b} = obj; //* ==> Unexpected token
+// ({ a, b } = obj);
+// console.log(a, b); //* ==> 23 7
 
-//? NESTED objects (we already declared and assigned openingHours)
-const { fri } = openingHours;
-console.log(fri); //* ==> {open: 11, close: 23}
+// //? NESTED objects (we already declared and assigned openingHours)
+// // const { fri } = openingHours;
+// // console.log(fri); //* ==> {open: 11, close: 23}
+// const {
+//   fri: { open, close },
+// } = openingHours;
+// console.log(open, close); //* ==? 11 23
+
+// //? RW Example... Passes in ONE object
+// //? USE CURLY BRACES!!!
+// restaurant.orderDelivery({
+//   time: '22:30',
+//   address: 'Via del Sole, 21',
+//   mainIndex: 2,
+//   starterIndex: 2,
+// });
 
 //! ///////////////DESTRUCTURING ARRAYS/////////////////
 //! ////////////////////////////////////////////////////
