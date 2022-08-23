@@ -46,27 +46,125 @@ const restaurant = {
       `Order Received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+
+  //? Method to order pasta with exactly 3 ingredients
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
+    );
+  },
+
+  //? otherIndredients puts all the remaining arguments into an array
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
+
+//! ////////REST PATTERN and PARAMETERS////////////
+//! //////////////////////////////////////////////
+// //? ///////////////DESTRUCTURING//////////////////
+// //? Used to pack elements into an array
+
+// //? Below is REST because it is on the left of =
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, others); //* ==> 1 2 [3, 4, 5]
+// // const [a, b, others] = [1, 2, 3, 4, 5]; //* ==> 1 2 3
+
+// //? REST element must be the LAST element
+// const [pizza, , risotto, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(pizza, risotto, otherFood); //* ==> Pizza Risotto [Everything in mainMenu and starterMenu]
+
+// //? OBJECTS
+// const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(weekdays); //* ==> {thu:, fri:}
+// console.log(sat); //* ==> {open: 0, close: 24}
+
+// //? ////////////////FUNCTIONS/////////////////////
+// const add = function (...numbers) {
+//   console.log(numbers); //* ==> Builds passed #'s to arrays
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// };
+
+// add(2, 3);
+// add(5, 3, 7, 2);
+// add(8, 2, 5, 3, 2, 1, 4);
+
+// const x = [23, 5, 7];
+// add(...x); //* ==> spreads all number into the function
+
+// //? RW Example
+// restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+// //* ==> mushrooms
+// //* ==> [onion, olives, spinach]
+
+// restaurant.orderPizza('sausage');
+// //* ==> sausage
+// //* ==> []
 
 //! /////////////SPREAD OPERATOR//////////////////
 //! //////////////////////////////////////////////
-//? Only used where values are seperated by commas
+// //? Used to build new arrays  by unpacking an array or to pass multiple values to a function
+// //? Only used where values are seperated by commas
+// //? Below is SPREAD because the dots are on the right side of the assignment operator (=)
+// const arr = [1, 2, ...[3, 4]];
 
-const arr = [7, 8, 9];
-//? Bad way to add to array
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr); //* ==> [1, 2, 7, 8, 9]
+// const arr = [7, 8, 9];
+// //? Bad way to add to array
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr); //* ==> [1, 2, 7, 8, 9]
 
-//? Good way to add to array
-const goodNewArr = [1, 2, ...arr];
-console.log(goodNewArr); //* ==> [1, 2, 7, 8, 9]
-console.log(...goodNewArr); //* ==> 1 2 7 8 9
-//? If you just added the array
-const newArr = [1, 2, arr];
-console.log(newArr); //* ==> [1, 2, Array(3)]
+// //? Good way to add to array
+// const goodNewArr = [1, 2, ...arr];
+// console.log(goodNewArr); //* ==> [1, 2, 7, 8, 9]
+// console.log(...goodNewArr); //* ==> 1 2 7 8 9
+// //? If you just added the array
+// const newArr = [1, 2, arr];
+// console.log(newArr); //* ==> [1, 2, Array(3)]
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log(newMenu); //* ==> Adds 'Gnocci' to newMenu array with all mainMenu items
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log(newMenu); //* ==> Adds 'Gnocci' to newMenu array with all mainMenu items
+
+// //? COPY array (shallow copy)
+// const mainMenuCopy = [...restaurant.mainMenu];
+// console.log(mainMenuCopy); //* ==> ['Pizza', 'Pasta', 'Risotto']
+
+// //? JOIN 2 arrays or more into one new array
+// const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(menu);
+
+// //? ITERABLES: strings, arrays, maps, sets
+// //? but NOT OBJECTs
+
+// //? Iterate a String
+// const str = 'Jonas';
+// const letters = [...str, ' ', 'S.'];
+// console.log(letters); //* ==> [J, o, n, a, s, ' ', S.]
+// console.log(...str); //* ==> J o n a s
+// // console.log(`${...str}`); //* ==> Unexpected token
+
+// //? RW Example
+// // const ingredients = [
+// //   prompt(`Let's make pasta! Ingredient 1?`),
+// //   prompt(`Let's make pasta! Ingredient 2?`),
+// //   prompt(`Let's make pasta! Ingredient 3?`),
+// // ];
+// // console.log(ingredients);
+// // restaurant.orderPasta(...ingredients);
+
+// //? OBJECTS (copy entire restaurant object and add to it)
+// const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
+// console.log(newRestaurant);
+
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = 'Ristorante Roma';
+// console.log(restaurantCopy.name); //* ==> Ristorante Roma
+// console.log(restaurant.name); //* ==> Classico Italiano
 
 //! /////////////DESTRUCTURING OBJECTS//////////////////
 //! ////////////////////////////////////////////////////
