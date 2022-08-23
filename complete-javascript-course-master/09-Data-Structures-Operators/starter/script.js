@@ -61,40 +61,84 @@ const restaurant = {
   },
 };
 
+//! /////////LOGICAL ASSIGNMENT OPERATORs//////////
+//! ///////////////////////////////////////////////
+const rest1 = {
+  name: 'Capri',
+  // numGuests: '20',
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+//? Now we want to add numGuests to objects without them
+// rest1.numGuests = rest1.numGuests || 10; //* ==> 20
+// rest2.numGuests = rest2.numGuests || 10; //* ==> 10
+
+//? Same as above using OR ASSIGNMENT operator
+//? If the value is falsey, it assigns a value
+rest2.numGuests ||= 10;
+//? rest1.numGuests ??= 10 since 0 is falsey;
+//? using ||= ==> 10 so ?? is better here
+rest1.numGuests ??= 10;
+console.log(rest1.numGuests); //* ==> 0
+console.log(rest2.numGuests); //* ==> 10
+
+//? Logical AND operator
+// rest2.owner = rest2.owner && '<ANONYMOUS>';
+//? Same as above, 1st is truthy, so second is evaluated
+rest2.owner &&= '<ANONYMOUS>';
+console.log(rest2); //* ==> owner: <ANONYMOUS>
+
+rest1.owner &&= '<ANONYMOUS>';
+console.log(rest1); //* ==> does not add ANONYMOUS because owner did not exist and short circuits immediately
+
+//! ////////KNOWLEDGE COALESCING OPERATOR//////////
+//! ///////////////////////////////////////////////
+// //? Use ?? to work with nullish values
+// //? Nullish values = null and undefined (Not 0 or '')
+// //? So 0 and '' are truthy values for ?? operator
+// //? Only triggers with null or undefined
+// restaurant.numGuests = 0;
+// const guests3 = restaurant.numGuests ?? 10;
+// console.log(guests3);
+
 //! ///////////SHORT CIRCUITING////////////////////
 //! ///////////////////////////////////////////////
-//? Use and return ANY data type, short-circuiting
-//? OR operator returns first TRUE value or last value if all are false
-console.log('----OR----');
-console.log(3 || 'Jonas'); //* ==> 3
-console.log('' || 'Jonas'); //* true Jonas
-console.log(true || 0); //* ==? true
-console.log(undefined || null); //* ==> null
-console.log(undefined || 0 || '' || 'Hello' || 23); //* ==> Hello
+// //? Use and return ANY data type, short-circuiting
+// //? OR operator returns first TRUE value or last value if all are false
+// console.log('----OR----');
+// console.log(3 || 'Jonas'); //* ==> 3
+// console.log('' || 'Jonas'); //* true Jonas
+// console.log(true || 0); //* ==? true
+// console.log(undefined || null); //* ==> null
+// console.log(undefined || 0 || '' || 'Hello' || 23); //* ==> Hello
 
-//? If restaurant.numbGuests exists ? then result is restaurant.numGuests : if it does not exists then default value of numGuests = 10
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1); //* ==> 10
+// //? If restaurant.numbGuests exists ? then result is restaurant.numGuests : if it does not exists then default value of numGuests = 10
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1); //* ==> 10
 
-//? Short circuit to replicate above example
-//? It's 10 in both examples because numGuests does not exist
-//? Neither would work if numGuests was 0 since 0 is flasey
-const guests2 = restaurant.numGuests || 10;
-console.log(guests2); //* ==> 10
+// //? Short circuit to replicate above example
+// //? It's 10 in both examples because numGuests does not exist
+// //? Neither would work if numGuests was 0 since 0 is flasey
+// const guests2 = restaurant.numGuests || 10;
+// console.log(guests2); //* ==> 10
 
-//? AND operator returns the first false value
-//? If all values are true it returns the last one
-console.log('----AND----');
-console.log(0 && 'Jonas'); //* ==> 0
-console.log(7 && 'Jonas'); //* ==> Jonas
+// //? AND operator returns the first false value
+// //? If all values are true it returns the last one
+// console.log('----AND----');
+// console.log(0 && 'Jonas'); //* ==> 0
+// console.log(7 && 'Jonas'); //* ==> Jonas
 
-//? orderPizza exists, evaluating as true
-if (restaurant.orderPizza) {
-  restaurant.orderPizza('pepperoni', 'spinach');
-} //* ==> pepperoni [spinach]
+// //? orderPizza exists, evaluating as true
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('pepperoni', 'spinach');
+// } //* ==> pepperoni [spinach]
 
-//? same as above using short circuiting. orderPizza exists so it does performs the function
-restaurant.orderPizza && restaurant.orderPizza('pepperoni', 'spinach'); //* ==> pepperoni [spinach]
+// //? same as above using short circuiting. orderPizza exists so it does performs the function
+// restaurant.orderPizza && restaurant.orderPizza('pepperoni', 'spinach'); //* ==> pepperoni [spinach]
 
 //! ////////REST PATTERN and PARAMETERS////////////
 //! //////////////////////////////////////////////
