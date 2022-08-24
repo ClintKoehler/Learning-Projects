@@ -4,6 +4,24 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const hours = {
+  //? Example to reference weekdays variable for thu and friday
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -11,44 +29,51 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  //? Old way to reference object outside of this object
+  // openingHours: openingHours,
 
-  //? Objects inside of objects, which is inside the restaurant object
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  //? ES6 Enahanced Object Literals
+  //? We changed the openingHours key to hours
+  hours,
+
+  // //? Objects inside of objects, which is inside the restaurant object
+  // openingHours: {
+  //   thu: {
+  //     open: 12,
+  //     close: 22,
+  //   },
+  //   fri: {
+  //     open: 11,
+  //     close: 23,
+  //   },
+  //   sat: {
+  //     open: 0, // Open 24 hours
+  //     close: 24,
+  //   },
+  // },
 
   //? Method (this one takes 2 indexes)
-  order: function (starterIndex, mainIndex) {
+  //? OLD way
+  // order: function (starterIndex, mainIndex) {
+  //   return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  // },
+
+  //? ES6 NEW way from above
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
   //? The objects is immediatley destructured
   //? Arguments need to match, but order does not matter
   //? We also set default values if property is not passed in
-  orderDelivery: function ({
-    starterIndex = 1,
-    mainIndex = 0,
-    time = '20:00',
-    address,
-  }) {
+  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
     console.log(
       `Order Received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
 
   //? Method to order pasta with exactly 3 ingredients
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(
       `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
     );
@@ -61,7 +86,39 @@ const restaurant = {
   },
 };
 
-//! /////////LOGICAL ASSIGNMENT OPERATORs//////////
+//! //////////////OPTIONAL CHAINING////////////////
+//! ///////////////////////////////////////////////
+console.log(restaurant.hours.mon); //* ==> undefined (mon does not exist)
+// console.log(restaurant.hours.mon.open); //* ==> error
+//? Using optional chaining (if mon exists)
+console.log(restaurant.hours.mon?.open); //* ==> undefined
+console.log(restaurant.hours?.mon?.open); //* ==> undefined
+
+//! ////////////ENHANCED OBJECT LITERALS///////////
+//! ///////////////////////////////////////////////
+//? See example in how the restaurant object in function syntax changes and moving hours out of the object, but still being able to reference them and different way to reference each day.
+
+//! /////////////////FOR OF LOOP///////////////////
+//! ///////////////////////////////////////////////
+// //? Can still use CONTINUE and BREAK
+// //? Mostly meant to get just elements, harder to get index
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// for (const item of menu) console.log(item); //* ==> Prints each element from both menues
+
+// //? User .entries to get the indexes
+// for (const item of menu.entries()) {
+//   console.log(item);
+// } //* ==> [0, Focaccia], [1, Brushetta], ...etc
+
+// //? i = position [0], element = position [1]
+// for (const [i, element] of menu.entries()) {
+//   console.log(`${i + 1}: ${element}`);
+// } //* ==> 1: Focaccia, 2: Bruschetta, ...etc
+
+// console.log([...menu.entries()]);
+
+//! /////////LOGICAL ASSIGNMENT OPERATORS//////////
 //! ///////////////////////////////////////////////
 // const rest1 = {
 //   name: 'Capri',
@@ -109,36 +166,36 @@ const restaurant = {
 //! ///////////////////////////////////////////////
 //? Use and return ANY data type, short-circuiting
 //? OR operator returns first TRUE value or last value if all are false
-console.log('----OR----');
-console.log(3 || 'Jonas'); //* ==> 3
-console.log('' || 'Jonas'); //* true Jonas
-console.log(true || 0); //* ==? true
-console.log(undefined || null); //* ==> null
-console.log(undefined || 0 || '' || 'Hello' || 23); //* ==> Hello
+// console.log('----OR----');
+// console.log(3 || 'Jonas'); //* ==> 3
+// console.log('' || 'Jonas'); //* true Jonas
+// console.log(true || 0); //* ==? true
+// console.log(undefined || null); //* ==> null
+// console.log(undefined || 0 || '' || 'Hello' || 23); //* ==> Hello
 
-//? If restaurant.numbGuests exists ? then result is restaurant.numGuests : if it does not exists then default value of numGuests = 10
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1); //* ==> 10
+// //? If restaurant.numbGuests exists ? then result is restaurant.numGuests : if it does not exists then default value of numGuests = 10
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1); //* ==> 10
 
-//? Short circuit to replicate above example
-//? It's 10 in both examples because numGuests does not exist
-//? Neither would work if numGuests was 0 since 0 is flasey
-const guests2 = restaurant.numGuests || 10;
-console.log(guests2); //* ==> 10
+// //? Short circuit to replicate above example
+// //? It's 10 in both examples because numGuests does not exist
+// //? Neither would work if numGuests was 0 since 0 is flasey
+// const guests2 = restaurant.numGuests || 10;
+// console.log(guests2); //* ==> 10
 
-//? AND operator returns the first false value
-//? If all values are true it returns the last one
-console.log('----AND----');
-console.log(0 && 'Jonas'); //* ==> 0
-console.log(7 && 'Jonas'); //* ==> Jonas
+// //? AND operator returns the first false value
+// //? If all values are true it returns the last one
+// console.log('----AND----');
+// console.log(0 && 'Jonas'); //* ==> 0
+// console.log(7 && 'Jonas'); //* ==> Jonas
 
-//? orderPizza exists, evaluating as true
-if (restaurant.orderPizza) {
-  restaurant.orderPizza('pepperoni', 'spinach');
-} //* ==> pepperoni [spinach]
+// //? orderPizza exists, evaluating as true
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('pepperoni', 'spinach');
+// } //* ==> pepperoni [spinach]
 
-//? same as above using short circuiting. orderPizza exists so it does performs the function
-restaurant.orderPizza && restaurant.orderPizza('pepperoni', 'spinach'); //* ==> pepperoni [spinach]
+// //? same as above using short circuiting. orderPizza exists so it does performs the function
+// restaurant.orderPizza && restaurant.orderPizza('pepperoni', 'spinach'); //* ==> pepperoni [spinach]
 
 // ! ////////REST PATTERN and PARAMETERS////////////
 // ! //////////////////////////////////////////////
