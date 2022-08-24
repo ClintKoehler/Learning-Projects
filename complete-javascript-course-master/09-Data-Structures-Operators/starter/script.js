@@ -63,37 +63,37 @@ const restaurant = {
 
 //! /////////LOGICAL ASSIGNMENT OPERATORs//////////
 //! ///////////////////////////////////////////////
-const rest1 = {
-  name: 'Capri',
-  // numGuests: '20',
-  numGuests: 0,
-};
+// const rest1 = {
+//   name: 'Capri',
+//   // numGuests: '20',
+//   numGuests: 0,
+// };
 
-const rest2 = {
-  name: 'La Piazza',
-  owner: 'Giovanni Rossi',
-};
-//? Now we want to add numGuests to objects without them
-// rest1.numGuests = rest1.numGuests || 10; //* ==> 20
-// rest2.numGuests = rest2.numGuests || 10; //* ==> 10
+// const rest2 = {
+//   name: 'La Piazza',
+//   owner: 'Giovanni Rossi',
+// };
+// //? Now we want to add numGuests to objects without them
+// // rest1.numGuests = rest1.numGuests || 10; //* ==> 20
+// // rest2.numGuests = rest2.numGuests || 10; //* ==> 10
 
-//? Same as above using OR ASSIGNMENT operator
-//? If the value is falsey, it assigns a value
-rest2.numGuests ||= 10;
-//? rest1.numGuests ??= 10 since 0 is falsey;
-//? using ||= ==> 10 so ?? is better here
-rest1.numGuests ??= 10;
-console.log(rest1.numGuests); //* ==> 0
-console.log(rest2.numGuests); //* ==> 10
+// //? Same as above using OR ASSIGNMENT operator
+// //? If the value is falsey, it assigns a value
+// rest2.numGuests ||= 10;
+// //? rest1.numGuests ??= 10 since 0 is falsey;
+// //? using ||= ==> 10 so ?? is better here
+// rest1.numGuests ??= 10;
+// console.log(rest1.numGuests); //* ==> 0
+// console.log(rest2.numGuests); //* ==> 10
 
-//? Logical AND operator
-// rest2.owner = rest2.owner && '<ANONYMOUS>';
-//? Same as above, 1st is truthy, so second is evaluated
-rest2.owner &&= '<ANONYMOUS>';
-console.log(rest2); //* ==> owner: <ANONYMOUS>
+// //? Logical AND operator
+// // rest2.owner = rest2.owner && '<ANONYMOUS>';
+// //? Same as above, 1st is truthy, so second is evaluated
+// rest2.owner &&= '<ANONYMOUS>';
+// console.log(rest2); //* ==> owner: <ANONYMOUS>
 
-rest1.owner &&= '<ANONYMOUS>';
-console.log(rest1); //* ==> does not add ANONYMOUS because owner did not exist and short circuits immediately
+// rest1.owner &&= '<ANONYMOUS>';
+// console.log(rest1); //* ==> does not add ANONYMOUS because owner did not exist and short circuits immediately
 
 //! ////////KNOWLEDGE COALESCING OPERATOR//////////
 //! ///////////////////////////////////////////////
@@ -107,41 +107,41 @@ console.log(rest1); //* ==> does not add ANONYMOUS because owner did not exist a
 
 //! ///////////SHORT CIRCUITING////////////////////
 //! ///////////////////////////////////////////////
-// //? Use and return ANY data type, short-circuiting
-// //? OR operator returns first TRUE value or last value if all are false
-// console.log('----OR----');
-// console.log(3 || 'Jonas'); //* ==> 3
-// console.log('' || 'Jonas'); //* true Jonas
-// console.log(true || 0); //* ==? true
-// console.log(undefined || null); //* ==> null
-// console.log(undefined || 0 || '' || 'Hello' || 23); //* ==> Hello
+//? Use and return ANY data type, short-circuiting
+//? OR operator returns first TRUE value or last value if all are false
+console.log('----OR----');
+console.log(3 || 'Jonas'); //* ==> 3
+console.log('' || 'Jonas'); //* true Jonas
+console.log(true || 0); //* ==? true
+console.log(undefined || null); //* ==> null
+console.log(undefined || 0 || '' || 'Hello' || 23); //* ==> Hello
 
-// //? If restaurant.numbGuests exists ? then result is restaurant.numGuests : if it does not exists then default value of numGuests = 10
-// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-// console.log(guests1); //* ==> 10
+//? If restaurant.numbGuests exists ? then result is restaurant.numGuests : if it does not exists then default value of numGuests = 10
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1); //* ==> 10
 
-// //? Short circuit to replicate above example
-// //? It's 10 in both examples because numGuests does not exist
-// //? Neither would work if numGuests was 0 since 0 is flasey
-// const guests2 = restaurant.numGuests || 10;
-// console.log(guests2); //* ==> 10
+//? Short circuit to replicate above example
+//? It's 10 in both examples because numGuests does not exist
+//? Neither would work if numGuests was 0 since 0 is flasey
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2); //* ==> 10
 
-// //? AND operator returns the first false value
-// //? If all values are true it returns the last one
-// console.log('----AND----');
-// console.log(0 && 'Jonas'); //* ==> 0
-// console.log(7 && 'Jonas'); //* ==> Jonas
+//? AND operator returns the first false value
+//? If all values are true it returns the last one
+console.log('----AND----');
+console.log(0 && 'Jonas'); //* ==> 0
+console.log(7 && 'Jonas'); //* ==> Jonas
 
-// //? orderPizza exists, evaluating as true
-// if (restaurant.orderPizza) {
-//   restaurant.orderPizza('pepperoni', 'spinach');
-// } //* ==> pepperoni [spinach]
+//? orderPizza exists, evaluating as true
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('pepperoni', 'spinach');
+} //* ==> pepperoni [spinach]
 
-// //? same as above using short circuiting. orderPizza exists so it does performs the function
-// restaurant.orderPizza && restaurant.orderPizza('pepperoni', 'spinach'); //* ==> pepperoni [spinach]
+//? same as above using short circuiting. orderPizza exists so it does performs the function
+restaurant.orderPizza && restaurant.orderPizza('pepperoni', 'spinach'); //* ==> pepperoni [spinach]
 
-//! ////////REST PATTERN and PARAMETERS////////////
-//! //////////////////////////////////////////////
+// ! ////////REST PATTERN and PARAMETERS////////////
+// ! //////////////////////////////////////////////
 // //? ///////////////DESTRUCTURING//////////////////
 // //? Used to pack elements into an array
 
@@ -159,8 +159,8 @@ console.log(rest1); //* ==> does not add ANONYMOUS because owner did not exist a
 
 // //? OBJECTS
 // const { sat, ...weekdays } = restaurant.openingHours;
-// console.log(weekdays); //* ==> {thu:, fri:}
 // console.log(sat); //* ==> {open: 0, close: 24}
+// console.log(weekdays); //* ==> {thu:, fri:}
 
 // //? ////////////////FUNCTIONS/////////////////////
 // const add = function (...numbers) {
@@ -188,12 +188,14 @@ console.log(rest1); //* ==> does not add ANONYMOUS because owner did not exist a
 
 //! /////////////SPREAD OPERATOR//////////////////
 //! //////////////////////////////////////////////
-// //? Used to build new arrays  by unpacking an array or to pass multiple values to a function
+// //? Used to build new arrays by unpacking an array or to pass multiple values to a function
 // //? Only used where values are seperated by commas
 // //? Below is SPREAD because the dots are on the right side of the assignment operator (=)
-// const arr = [1, 2, ...[3, 4]];
+// // const arr = [1, 2, ...[3, 4]];
+// // console.log(arr); //* ==> [1, 2, 3, 4]
 
 // const arr = [7, 8, 9];
+
 // //? Bad way to add to array
 // const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
 // console.log(badNewArr); //* ==> [1, 2, 7, 8, 9]
@@ -201,6 +203,7 @@ console.log(rest1); //* ==> does not add ANONYMOUS because owner did not exist a
 // //? Good way to add to array
 // const goodNewArr = [1, 2, ...arr];
 // console.log(goodNewArr); //* ==> [1, 2, 7, 8, 9]
+// //? Below unpacks the elements from the array
 // console.log(...goodNewArr); //* ==> 1 2 7 8 9
 // //? If you just added the array
 // const newArr = [1, 2, arr];
@@ -261,6 +264,7 @@ console.log(rest1); //* ==> does not add ANONYMOUS because owner did not exist a
 
 // //? Setting DEFAULT values (set to empty array bellow)
 // //? Very helpful when getting data from API's
+// //? menu did not exist before
 // const { menu = [], starterMenu: starters = [] } = restaurant;
 // console.log(menu, starters); //* ==> [], [everything in starterMenu]
 
@@ -318,7 +322,7 @@ console.log(rest1); //* ==> does not add ANONYMOUS because owner did not exist a
 // console.log(main, secondary); //* ==> Italian Pizzeria
 
 // //? Receive 2 return values from a function
-// console.log(restaurant.order(2, 0)); //* ==> (2) ['Garlic Bread', 'Pizza']
+// console.log(restaurant.order(2, 0)); //* ==> ['Garlic Bread', 'Pizza']
 // const [starter, mainCourse] = restaurant.order(2, 0);
 // console.log(starter, mainCourse); //* ==> Garlic Bread Pizza
 
