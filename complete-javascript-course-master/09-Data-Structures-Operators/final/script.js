@@ -386,6 +386,8 @@ const game = {
   },
 };
 
+//? Entries will also give the index as well
+//? Entires writtin that way since it is an ARRAY
 for (const [i, player] of game.scored.entries())
   console.log(`Goal ${i + 1}: ${player}`);
 
@@ -395,7 +397,9 @@ for (const odd of odds) avg += odd;
 avg /= odds.length;
 console.log(avg);
 
+//? Entries writtin that way since it is an OBJECT
 for (const [team, odd] of Object.entries(game.odds)) {
+  //? If team = x then 'draw', if not then ...
   const teamStr = team === 'x' ? 'draw' : `Victory ${game[team]}`;
   console.log(`Odd of ${teamStr} ${odd}`);
 }
