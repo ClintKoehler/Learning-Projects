@@ -8,10 +8,12 @@ const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 const hours = {
   //? Example to reference weekdays variable for thu and friday
+  //* thu
   [weekdays[3]]: {
     open: 12,
     close: 22,
   },
+  //* fri
   [weekdays[4]]: {
     open: 11,
     close: 23,
@@ -86,13 +88,73 @@ const restaurant = {
   },
 };
 
+//! ///LOOPING OBJECTS: OBJ KEYS, VALUES, ENTRIES//
+//! ///////////////////////////////////////////////
+//? Objects are not iterables, but can be iterated over in indirect way
+//? Loop over KEYS (Property Names)
+for (const day of Object.keys(hours)) {
+  console.log(day); //* ==> thu, fri, sat
+}
+console.log(hours); //* ==> {thu: {...}}, ...etc
+
+//? Property NAMES
+const properties = Object.keys(hours);
+console.log(properties); //* ==> [thu, fri, sat]
+
+let openStr = `We are open on ${properties.length} days, `;
+// TODO Practice what is below!!!
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr); //* ==> We are open on 3 days, thu, fri sat,
+
+//? Property VALUES
+const values = Object.values(hours);
+console.log(values); //* ==> (3) {...}, ...{...} and inside is {open: 12, close: 22}, ...{open: 11, close: 23}
+
+//? Entire object
+//? ENTRIES = NAMES and VALUES together
+const entries = Object.entries(hours);
+// console.log(entries); //* ==> [Array(2)], ... and in each array 0: thu 1: {open: 12, close: 22}
+
+// TODO Practice what is below!!!
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+} //* ==> On thu we open at 12 and close at 22
+//* ==> On fri we open at 11 and close at 23
+//* ==> On sat we open at 0 and close at 24
+
 //! //////////////OPTIONAL CHAINING////////////////
 //! ///////////////////////////////////////////////
-console.log(restaurant.hours.mon); //* ==> undefined (mon does not exist)
-// console.log(restaurant.hours.mon.open); //* ==> error
-//? Using optional chaining (if mon exists)
-console.log(restaurant.hours.mon?.open); //* ==> undefined
-console.log(restaurant.hours?.mon?.open); //* ==> undefined
+// console.log(restaurant.hours.mon); //* ==> undefined (mon does not exist)
+// // console.log(restaurant.hours.mon.open); //* ==> error
+// //? Using optional chaining (if mon exists)
+// console.log(restaurant.hours.mon?.open); //* ==> undefined
+// console.log(restaurant.hours?.mon?.open); //* ==> undefined
+
+// //? RW Example
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+// for (const day of days) {
+//   //? ? = If open exists
+//   const open = restaurant.hours[day]?.open ?? `closed`;
+//   console.log(`on ${day}, we open at ${open}`);
+// }
+
+// //? Methods
+// console.log(restaurant.order?.(0, 1) ?? 'Method does not exist'); //* ==> (2) [Focaccia, Pasta]
+// console.log(restaurant.orderRissoto?.(0, 1) ?? 'Method does not exist'); //* ==> Method does not exist
+
+// //? Arrays
+// //? ? Does value on the left exist
+// const users = [{ name: 'Jonas', email: 'hello@jonas.io' }];
+// console.log(users[0]?.name ?? 'User array empty'); //* ==> Jonas
+
+// const users1 = [];
+// console.log(users1[0]?.name ?? `User array empty`); //* ==> User array empty
+
+// //? Same as doing old way below
+// if (users.length > 0) console.log(users[0].name);
+// else console.log('User array empty'); //* ==> Jonas
 
 //! ////////////ENHANCED OBJECT LITERALS///////////
 //! ///////////////////////////////////////////////
