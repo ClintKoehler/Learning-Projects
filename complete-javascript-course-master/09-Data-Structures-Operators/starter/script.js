@@ -88,42 +88,69 @@ const restaurant = {
   },
 };
 
+//! ////////////////////SETS///////////////////////
+//! ///////////////////////////////////////////////
+//? Below is an array since it is iterable
+//? Values are unique (removes duplicates)
+//? Order of values is irrelevant
+//? Sets do NOT have an index
+//? Sets do not allow you to retrieve individual values
+const orderSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(orderSet); //* ==> {Pasta, Pizza, Risotto}
+
+//? Uterates over the string
+console.log(new Set('Jonas')); //* {J, o, n, a, s}
+console.log(orderSet.size); //* ==> 3
+//? .has to check if element is there or not
+console.log(orderSet.has('Pizza')); //* ==> true
+//? .add to add elements
+orderSet.add('Garlic Bread');
+//? .delete to delete elements
+orderSet.delete('Risotto');
+
 //! ///LOOPING OBJECTS: OBJ KEYS, VALUES, ENTRIES//
 //! ///////////////////////////////////////////////
-//? Objects are not iterables, but can be iterated over in indirect way
-//? Loop over KEYS (Property Names)
-for (const day of Object.keys(hours)) {
-  console.log(day); //* ==> thu, fri, sat
-}
-console.log(hours); //* ==> {thu: {...}}, ...etc
+// //? Objects are not iterables, but can be iterated over in indirect way
+// //? Loop over KEYS (Property Names)
+// for (const day of Object.keys(hours)) {
+//   console.log(day); //* ==> thu, fri, sat
+// }
+// console.log(hours); //* ==> {thu: {...}}, ...etc
 
-//? Property NAMES
-const properties = Object.keys(hours);
-console.log(properties); //* ==> [thu, fri, sat]
+// //? Property NAMES
+// const properties = Object.keys(hours);
+// console.log(properties); //* ==> [thu, fri, sat]
 
-// TODO Practice what is below!!!
-let openStr = `We are open on ${properties.length} days, `;
+// // TODO Practice what is below!!!
+// let openStr = `We are open on ${properties.length} days, `;
 
-for (const day of properties) {
-  openStr += `${day}, `;
-}
-console.log(openStr); //* ==> We are open on 3 days, thu, fri sat,
+// for (const day of properties) {
+//   openStr += `${day}, `;
+// }
+// console.log(openStr); //* ==> We are open on 3 days, thu, fri sat,
 
-//? Property VALUES
-const values = Object.values(hours);
-console.log(values); //* ==> (3) {...}, ...{...} and inside is {open: 12, close: 22}, ...{open: 11, close: 23}
+// //? Property VALUES
+// const values = Object.values(hours);
+// console.log(values); //* ==> (3) {...}, ...{...} and inside is {open: 12, close: 22}, ...{open: 11, close: 23}
 
-//? Entire object
-//? ENTRIES = NAMES and VALUES together
-const entries = Object.entries(hours);
-// console.log(entries); //* ==> [Array(2)], ... and in each array 0: thu 1: {open: 12, close: 22}
+// //? Entire object
+// //? ENTRIES = NAMES and VALUES together
+// const entries = Object.entries(hours);
+// // console.log(entries); //* ==> [Array(2)], ... and in each array 0: thu 1: {open: 12, close: 22}
 
-// TODO Practice what is below!!!
-for (const [key, { open, close }] of entries) {
-  console.log(`On ${key} we open at ${open} and close at ${close}`);
-} //* ==> On thu we open at 12 and close at 22
-//* ==> On fri we open at 11 and close at 23
-//* ==> On sat we open at 0 and close at 24
+// // TODO Practice what is below!!!
+// for (const [key, { open, close }] of entries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// } //* ==> On thu we open at 12 and close at 22
+// //* ==> On fri we open at 11 and close at 23
+// //* ==> On sat we open at 0 and close at 24
 
 //! //////////////OPTIONAL CHAINING////////////////
 //! ///////////////////////////////////////////////
