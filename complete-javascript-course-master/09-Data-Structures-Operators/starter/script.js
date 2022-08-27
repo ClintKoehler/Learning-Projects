@@ -114,6 +114,21 @@ console.log(orderSet.has('Pizza')); //* ==> true
 orderSet.add('Garlic Bread');
 //? .delete to delete elements
 orderSet.delete('Risotto');
+//? delete ALL elements
+// orderSet.clear()
+
+//? Looping over a set
+for (const order of orderSet) console.log(order); //* ==> Pasta, Pizza, Garlic Bread
+
+//? Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = new Set(staff);
+console.log(staffUnique); //* ==> {Waiter, Chef, Manager}
+//? Convert a set to array
+const staffArray = [...new Set(staff)];
+console.log(staffArray); //* ==> [Waiter, Chef, Manager]
+//? Use .size at the end of the array to find the amount of UNIQUE items
+console.log(new Set('jonassschmedtmann').size); //* ==> 11
 
 //! ///LOOPING OBJECTS: OBJ KEYS, VALUES, ENTRIES//
 //! ///////////////////////////////////////////////
