@@ -135,89 +135,89 @@ console.log([...question.values()]);
 
 //! ////////////////////MAPS///////////////////////
 //! ///////////////////////////////////////////////
-// //? Can have any kind of key including, object and arrays
-// const rest = new Map();
-// //? Add new element to data structure
-// rest.set('name', 'Classico Italiano');
-// rest.set(1, 'Firenze, Italy');
-// rest.set(2, 'Lisbon, Portugal');
-// console.log(rest); //* ==> {<Everything above>}
+//? Can have any kind of key including, object and arrays
+const rest = new Map();
+//? Add new element to data structure
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+rest.set(2, 'Lisbon, Portugal');
+console.log(rest); //* ==> {<Everything above>}
 
-// //? Chaining additions
-// rest
-//   .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-//   .set('open', 11)
-//   .set('close', 23)
-//   .set(true, 'We are open')
-//   .set(false, 'We are closed');
-// //? Read from a map with .get
-// console.log(rest.get('name')); //* ==> Classico Italiano
-// console.log(rest.get(true)); //* ==> We are open
+//? Chaining additions
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open')
+  .set(false, 'We are closed');
+//? Read from a map with .get
+console.log(rest.get('name')); //* ==> Classico Italiano
+console.log(rest.get(true)); //* ==> We are open
 
-// //? Example of booleans as map keys
-// const time = 21;
-// console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); //* ==> We are open
+//? Example of booleans as map keys
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); //* ==> We are open
 
-// //? Check if map contains a certain key using .has
-// console.log(rest.has('categories')); //* ==> true
-// rest.delete(2); //* ==> removes 2, Lisbon, Portugal
-// console.log(rest);
-// console.log(rest.size); //* ==> size
-// //? clear everything in the map
-// // rest.clear();
-// console.log(rest);
+//? Check if map contains a certain key using .has
+console.log(rest.has('categories')); //* ==> true
+rest.delete(2); //* ==> removes 2, Lisbon, Portugal
+console.log(rest);
+console.log(rest.size); //* ==> size
+//? clear everything in the map
+// rest.clear();
+console.log(rest);
 
-// rest.set([1, 2], 'Test');
-// console.log(rest); //* ==> adds the array and test to position 7
-// console.log(rest.get([1, 2]));
+rest.set([1, 2], 'Test');
+console.log(rest); //* ==> adds the array and test to position 7
+console.log(rest.get([1, 2]));
 
-// const arr = [1, 2];
-// const myMap = new Map();
-// myMap.set(arr, 'I am mapped to an array');
-// console.log(myMap.get(arr)); //* ==> I am mapped to an array
-// console.log(arr); //* ==> (2) [1,2]
+const arr = [1, 2];
+const myMap = new Map();
+myMap.set(arr, 'I am mapped to an array');
+console.log(myMap.get(arr)); //* ==> I am mapped to an array
+console.log(arr); //* ==> (2) [1,2]
 
 //! ////////////////////SETS///////////////////////
 //! ///////////////////////////////////////////////
-// //? Below is an array since it is iterable
-// //? Values are unique (removes duplicates)
-// //? Order of values is irrelevant
-// //? Sets do NOT have an index
-// //? Sets do not allow you to retrieve individual values
-// const orderSet = new Set([
-//   'Pasta',
-//   'Pizza',
-//   'Pizza',
-//   'Risotto',
-//   'Pasta',
-//   'Pizza',
-// ]);
-// console.log(orderSet); //* ==> {Pasta, Pizza, Risotto}
+//? Below is an array since it is iterable
+//? Values are unique (removes duplicates)
+//? Order of values is irrelevant
+//? Sets do NOT have an index
+//? Sets do not allow you to retrieve individual values
+const orderSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(orderSet); //* ==> {Pasta, Pizza, Risotto}
 
-// //? Uterates over the string
-// console.log(new Set('Jonas')); //* {J, o, n, a, s}
-// console.log(orderSet.size); //* ==> 3
-// //? .has to check if element is there or not
-// console.log(orderSet.has('Pizza')); //* ==> true
-// //? .add to add elements
-// orderSet.add('Garlic Bread');
-// //? .delete to delete elements
-// orderSet.delete('Risotto');
-// //? delete ALL elements
-// // orderSet.clear()
+//? Uterates over the string
+console.log(new Set('Jonas')); //* {J, o, n, a, s}
+console.log(orderSet.size); //* ==> 3
+//? .has to check if element is there or not
+console.log(orderSet.has('Pizza')); //* ==> true
+//? .add to add elements
+orderSet.add('Garlic Bread');
+//? .delete to delete elements
+orderSet.delete('Risotto');
+//? delete ALL elements
+// orderSet.clear()
 
-// //? Looping over a set
-// for (const order of orderSet) console.log(order); //* ==> Pasta, Pizza, Garlic Bread
+//? Looping over a set
+for (const order of orderSet) console.log(order); //* ==> Pasta, Pizza, Garlic Bread
 
-// //? Example
-// const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
-// const staffUnique = new Set(staff);
-// console.log(staffUnique); //* ==> {Waiter, Chef, Manager}
-// //? Convert a set to array
-// const staffArray = [...new Set(staff)];
-// console.log(staffArray); //* ==> [Waiter, Chef, Manager]
-// //? Use .size at the end of the array to find the amount of UNIQUE items
-// console.log(new Set('jonassschmedtmann').size); //* ==> 11
+//? Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = new Set(staff);
+console.log(staffUnique); //* ==> {Waiter, Chef, Manager}
+//? Convert a set to array
+const staffArray = [...new Set(staff)];
+console.log(staffArray); //* ==> [Waiter, Chef, Manager]
+//? Use .size at the end of the array to find the amount of UNIQUE items
+console.log(new Set('jonassschmedtmann').size); //* ==> 11
 
 //! ///LOOPING OBJECTS: OBJ KEYS, VALUES, ENTRIES//
 //! ///////////////////////////////////////////////
