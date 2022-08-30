@@ -1,223 +1,258 @@
 'use strict';
 
-// Data needed for a later exercise
-// const flights =
-//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+//! ///////////////STRINGS PART 1//////////////////
+//! ///////////////////////////////////////////////
 
-const hours = {
-  //? Example to reference weekdays variable for thu and friday
-  //* thu
-  [weekdays[3]]: {
-    open: 12,
-    close: 22,
-  },
-  //* fri
-  [weekdays[4]]: {
-    open: 11,
-    close: 23,
-  },
-  sat: {
-    open: 0, // Open 24 hours
-    close: 24,
-  },
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]); //* ==> A
+console.log('B737'[0]); //* ==> B
+console.log(airline.length); //* ==> 16
+console.log('B737'.length); //* ==> 4
+console.log(airline.indexOf('r')); //* ==> 6
+console.log(airline.lastIndexOf('r')); //* ==> 10
+console.log(airline.lastIndexOf('portugal')); //* ==> -1 because it cannot be found in the string (lowercase p)
+
+console.log(airline.slice(4)); //* ==> Air Portugal, it begins extracting everything from position 4
+console.log(airline.slice(4, 7)); //* ==> Air, it begins extracting everything from position 4 ends at 7
+
+console.log(airline.slice(0, airline.indexOf(' '))); //* ==> TAP
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); //* ==> Portugal. Need to add plus one to remove empty space
+console.log(airline.slice(-2)); //* ==> al, (last 2 letters from Portugal)
+console.log(airline.slice(1, -1)); //* AP Air Portuga (beginning and end)
+
+//? Example
+const checkMiddleSeat = function (seat) {
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat');
+  else console.log('You got lucky');
 };
 
-// Data needed for first part of the section
-const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  //? Old way to reference object outside of this object
-  // openingHours: openingHours,
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
 
-  //? ES6 Enahanced Object Literals
-  //? We changed the openingHours key to hours
-  hours,
+console.log(new String('jonas')); //* JS converts strings to objects so you can use methods, then converts back to a string to return your result
+console.log(typeof new String('jonas')); //* ==> object
 
-  // //? Objects inside of objects, which is inside the restaurant object
-  // openingHours: {
-  //   thu: {
-  //     open: 12,
-  //     close: 22,
-  //   },
-  //   fri: {
-  //     open: 11,
-  //     close: 23,
-  //   },
-  //   sat: {
-  //     open: 0, // Open 24 hours
-  //     close: 24,
-  //   },
-  // },
+// const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
-  //? Method (this one takes 2 indexes)
-  //? OLD way
-  // order: function (starterIndex, mainIndex) {
-  //   return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  // },
+// const hours = {
+//   //? Example to reference weekdays variable for thu and friday
+//   //* thu
+//   [weekdays[3]]: {
+//     open: 12,
+//     close: 22,
+//   },
+//   //* fri
+//   [weekdays[4]]: {
+//     open: 11,
+//     close: 23,
+//   },
+//   sat: {
+//     open: 0, // Open 24 hours
+//     close: 24,
+//   },
+// };
 
-  //? ES6 NEW way from above
-  order(starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
+// // Data needed for first part of the section
+// const restaurant = {
+//   name: 'Classico Italiano',
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+//   //? Old way to reference object outside of this object
+//   // openingHours: openingHours,
 
-  //? The objects is immediatley destructured
-  //? Arguments need to match, but order does not matter
-  //? We also set default values if property is not passed in
-  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
-    console.log(
-      `Order Received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
-    );
-  },
+//   //? ES6 Enahanced Object Literals
+//   //? We changed the openingHours key to hours
+//   hours,
 
-  //? Method to order pasta with exactly 3 ingredients
-  orderPasta(ing1, ing2, ing3) {
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
-    );
-  },
+//   // //? Objects inside of objects, which is inside the restaurant object
+//   // openingHours: {
+//   //   thu: {
+//   //     open: 12,
+//   //     close: 22,
+//   //   },
+//   //   fri: {
+//   //     open: 11,
+//   //     close: 23,
+//   //   },
+//   //   sat: {
+//   //     open: 0, // Open 24 hours
+//   //     close: 24,
+//   //   },
+//   // },
 
-  //? otherIndredients puts all the remaining arguments into an array
-  orderPizza: function (mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient);
-    console.log(otherIngredients);
-  },
-};
+//   //? Method (this one takes 2 indexes)
+//   //? OLD way
+//   // order: function (starterIndex, mainIndex) {
+//   //   return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   // },
+
+//   //? ES6 NEW way from above
+//   order(starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
+
+//   //? The objects is immediatley destructured
+//   //? Arguments need to match, but order does not matter
+//   //? We also set default values if property is not passed in
+//   orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+//     console.log(
+//       `Order Received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+//     );
+//   },
+
+//   //? Method to order pasta with exactly 3 ingredients
+//   orderPasta(ing1, ing2, ing3) {
+//     console.log(
+//       `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
+//     );
+//   },
+
+//   //? otherIndredients puts all the remaining arguments into an array
+//   orderPizza: function (mainIngredient, ...otherIngredients) {
+//     console.log(mainIngredient);
+//     console.log(otherIngredients);
+//   },
+// };
 
 //! ///////////////MAPS ITERATION//////////////////
 //! ///////////////////////////////////////////////
-//? Maps are iterable
-//? Same structure as Object.entries (Array of Arrays), first element is the key and the second is value
-const question = new Map([
-  ['question', 'What is the best programming language in the world?'],
-  [1, 'C'],
-  [2, 'Java'],
-  [3, 'JavaScript'],
-  ['correct', 3],
-  [true, 'Correct 🎉'],
-  [false, 'Try again'],
-]);
-console.log(question); //* ==> creates the map {[]}
+// //? Maps are iterable
+// //? Same structure as Object.entries (Array of Arrays), first element is the key and the second is value
+// const question = new Map([
+//   ['question', 'What is the best programming language in the world?'],
+//   [1, 'C'],
+//   [2, 'Java'],
+//   [3, 'JavaScript'],
+//   ['correct', 3],
+//   [true, 'Correct 🎉'],
+//   [false, 'Try again'],
+// ]);
+// console.log(question); //* ==> creates the map {[]}
 
-//? Convert object to map
-//? Object.entries converts hours object to iterable
-const hoursMap = new Map(Object.entries(hours));
-console.log(hoursMap); //* ==> creates array of arrays
+// //? Convert object to map
+// //? Object.entries converts hours object to iterable
+// const hoursMap = new Map(Object.entries(hours));
+// console.log(hoursMap); //* ==> creates array of arrays
 
-//? Quiz app
-//? Access question
-console.log(question.get('question'));
-for (const [key, value] of question) {
-  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
-}
-// const answer = Number(prompt('Your answer'));
-const answer = 3;
-console.log(answer);
+// //? Quiz app
+// //? Access question
+// console.log(question.get('question'));
+// for (const [key, value] of question) {
+//   if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// }
+// // const answer = Number(prompt('Your answer'));
+// const answer = 3;
+// console.log(answer);
 
-//? My way
-// answer === 3
-//   ? console.log(question.get(true))
-//   : console.log(question.get(false));
+// //? My way
+// // answer === 3
+// //   ? console.log(question.get(true))
+// //   : console.log(question.get(false));
 
-//? His way
-console.log(question.get(question.get('correct') === answer));
+// //? His way
+// console.log(question.get(question.get('correct') === answer));
 
-//? Convert MAP to ARRAY
-console.log([...question]);
-//? .entries is the same as above
-console.log([...question.entries()]);
-console.log([...question.keys()]);
-console.log([...question.values()]);
+// //? Convert MAP to ARRAY
+// console.log([...question]);
+// //? .entries is the same as above
+// console.log([...question.entries()]);
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
 
 //! ////////////////////MAPS///////////////////////
 //! ///////////////////////////////////////////////
-//? Can have any kind of key including, object and arrays
-const rest = new Map();
-//? Add new element to data structure
-rest.set('name', 'Classico Italiano');
-rest.set(1, 'Firenze, Italy');
-rest.set(2, 'Lisbon, Portugal');
-console.log(rest); //* ==> {<Everything above>}
+// //? Can have any kind of key including, object and arrays
+// const rest = new Map();
+// //? Add new element to data structure
+// rest.set('name', 'Classico Italiano');
+// rest.set(1, 'Firenze, Italy');
+// rest.set(2, 'Lisbon, Portugal');
+// console.log(rest); //* ==> {<Everything above>}
 
-//? Chaining additions
-rest
-  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-  .set('open', 11)
-  .set('close', 23)
-  .set(true, 'We are open')
-  .set(false, 'We are closed');
-//? Read from a map with .get
-console.log(rest.get('name')); //* ==> Classico Italiano
-console.log(rest.get(true)); //* ==> We are open
+// //? Chaining additions
+// rest
+//   .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+//   .set('open', 11)
+//   .set('close', 23)
+//   .set(true, 'We are open')
+//   .set(false, 'We are closed');
+// //? Read from a map with .get
+// console.log(rest.get('name')); //* ==> Classico Italiano
+// console.log(rest.get(true)); //* ==> We are open
 
-//? Example of booleans as map keys
-const time = 21;
-console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); //* ==> We are open
+// //? Example of booleans as map keys
+// const time = 21;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); //* ==> We are open
 
-//? Check if map contains a certain key using .has
-console.log(rest.has('categories')); //* ==> true
-rest.delete(2); //* ==> removes 2, Lisbon, Portugal
-console.log(rest);
-console.log(rest.size); //* ==> size
-//? clear everything in the map
-// rest.clear();
-console.log(rest);
+// //? Check if map contains a certain key using .has
+// console.log(rest.has('categories')); //* ==> true
+// rest.delete(2); //* ==> removes 2, Lisbon, Portugal
+// console.log(rest);
+// console.log(rest.size); //* ==> size
+// //? clear everything in the map
+// // rest.clear();
+// console.log(rest);
 
-rest.set([1, 2], 'Test');
-console.log(rest); //* ==> adds the array and test to position 7
-console.log(rest.get([1, 2]));
+// rest.set([1, 2], 'Test');
+// console.log(rest); //* ==> adds the array and test to position 7
+// console.log(rest.get([1, 2]));
 
-const arr = [1, 2];
-const myMap = new Map();
-myMap.set(arr, 'I am mapped to an array');
-console.log(myMap.get(arr)); //* ==> I am mapped to an array
-console.log(arr); //* ==> (2) [1,2]
+// const arr = [1, 2];
+// const myMap = new Map();
+// myMap.set(arr, 'I am mapped to an array');
+// console.log(myMap.get(arr)); //* ==> I am mapped to an array
+// console.log(arr); //* ==> (2) [1,2]
 
 //! ////////////////////SETS///////////////////////
 //! ///////////////////////////////////////////////
-//? Below is an array since it is iterable
-//? Values are unique (removes duplicates)
-//? Order of values is irrelevant
-//? Sets do NOT have an index
-//? Sets do not allow you to retrieve individual values
-const orderSet = new Set([
-  'Pasta',
-  'Pizza',
-  'Pizza',
-  'Risotto',
-  'Pasta',
-  'Pizza',
-]);
-console.log(orderSet); //* ==> {Pasta, Pizza, Risotto}
+// //? Below is an array since it is iterable
+// //? Values are unique (removes duplicates)
+// //? Order of values is irrelevant
+// //? Sets do NOT have an index
+// //? Sets do not allow you to retrieve individual values
+// const orderSet = new Set([
+//   'Pasta',
+//   'Pizza',
+//   'Pizza',
+//   'Risotto',
+//   'Pasta',
+//   'Pizza',
+// ]);
+// console.log(orderSet); //* ==> {Pasta, Pizza, Risotto}
 
-//? Uterates over the string
-console.log(new Set('Jonas')); //* {J, o, n, a, s}
-console.log(orderSet.size); //* ==> 3
-//? .has to check if element is there or not
-console.log(orderSet.has('Pizza')); //* ==> true
-//? .add to add elements
-orderSet.add('Garlic Bread');
-//? .delete to delete elements
-orderSet.delete('Risotto');
-//? delete ALL elements
-// orderSet.clear()
+// //? Uterates over the string
+// console.log(new Set('Jonas')); //* {J, o, n, a, s}
+// console.log(orderSet.size); //* ==> 3
+// //? .has to check if element is there or not
+// console.log(orderSet.has('Pizza')); //* ==> true
+// //? .add to add elements
+// orderSet.add('Garlic Bread');
+// //? .delete to delete elements
+// orderSet.delete('Risotto');
+// //? delete ALL elements
+// // orderSet.clear()
 
-//? Looping over a set
-for (const order of orderSet) console.log(order); //* ==> Pasta, Pizza, Garlic Bread
+// //? Looping over a set
+// for (const order of orderSet) console.log(order); //* ==> Pasta, Pizza, Garlic Bread
 
-//? Example
-const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
-const staffUnique = new Set(staff);
-console.log(staffUnique); //* ==> {Waiter, Chef, Manager}
-//? Convert a set to array
-const staffArray = [...new Set(staff)];
-console.log(staffArray); //* ==> [Waiter, Chef, Manager]
-//? Use .size at the end of the array to find the amount of UNIQUE items
-console.log(new Set('jonassschmedtmann').size); //* ==> 11
+// //? Example
+// const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+// const staffUnique = new Set(staff);
+// console.log(staffUnique); //* ==> {Waiter, Chef, Manager}
+// //? Convert a set to array
+// const staffArray = [...new Set(staff)];
+// console.log(staffArray); //* ==> [Waiter, Chef, Manager]
+// //? Use .size at the end of the array to find the amount of UNIQUE items
+// console.log(new Set('jonassschmedtmann').size); //* ==> 11
 
 //! ///LOOPING OBJECTS: OBJ KEYS, VALUES, ENTRIES//
 //! ///////////////////////////////////////////////
