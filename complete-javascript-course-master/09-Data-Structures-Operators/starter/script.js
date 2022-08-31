@@ -3,41 +3,170 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-//! ///////////////STRINGS PART 1//////////////////
+//! ///////////////STRINGS PART 3//////////////////
 //! ///////////////////////////////////////////////
+//? .split method
+console.log('a+very+nice+string'.split('+')); //* ==> [a, very, nice. string]
+console.log('Jonas Schmedtmann'.split(' ')); //* ==> [Jonas, Schmedtmann]
 
-const airline = 'TAP Air Portugal';
-const plane = 'A320';
+//? Using split and join with destructuring
+const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+//? .join method
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName); //* ==> Mr. Jonas SCHMEDTMANN
 
-console.log(plane[0]); //* ==> A
-console.log('B737'[0]); //* ==> B
-console.log(airline.length); //* ==> 16
-console.log('B737'.length); //* ==> 4
-console.log(airline.indexOf('r')); //* ==> 6
-console.log(airline.lastIndexOf('r')); //* ==> 10
-console.log(airline.lastIndexOf('portugal')); //* ==> -1 because it cannot be found in the string (lowercase p)
+//? Capitalizes the first letter of every word
+const capitalizName = function (name) {
+  const names = name.split(' '); //* creates arrat
+  const namesUpper = [];
 
-console.log(airline.slice(4)); //* ==> Air Portugal, it begins extracting everything from position 4
-console.log(airline.slice(4, 7)); //* ==> Air, it begins extracting everything from position 4 ends at 7
-
-console.log(airline.slice(0, airline.indexOf(' '))); //* ==> TAP
-console.log(airline.slice(airline.lastIndexOf(' ') + 1)); //* ==> Portugal. Need to add plus one to remove empty space
-console.log(airline.slice(-2)); //* ==> al, (last 2 letters from Portugal)
-console.log(airline.slice(1, -1)); //* AP Air Portuga (beginning and end)
-
-//? Example
-const checkMiddleSeat = function (seat) {
-  const s = seat.slice(-1);
-  if (s === 'B' || s === 'E') console.log('You got the middle seat');
-  else console.log('You got lucky');
+  for (const n of names) {
+    namesUpper.push(n[0].toUpperCase() + n.slice(1));
+  }
+  console.log(namesUpper);
 };
 
-checkMiddleSeat('11B');
-checkMiddleSeat('23C');
-checkMiddleSeat('3E');
+capitalizName('jessica ann smith davis');
+capitalizName('jonas schmedtmann');
 
-console.log(new String('jonas')); //* JS converts strings to objects so you can use methods, then converts back to a string to return your result
-console.log(typeof new String('jonas')); //* ==> object
+//? Padding a string
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '+')); //* ==> ++++++++++Go to gate 31! (entire length of string will be 25, then fill with +)
+console.log('Jonas'.padStart(25, '+')); //* ==> +++++++++++++++++Jonas
+console.log('Jonas'.padEnd(25, '+')); //* ==> Jonas++++++++++
+console.log('Jonas'.padStart(10, '-').padEnd(20, '-')); //* ==> -----Jonas--------
+
+const maskCreditCard = function (number) {
+  const str = number + ''; //? converts to string
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(545645121598784221654));
+console.log(maskCreditCard('465456421878979878672332')); //* ==> *****************2332
+
+//? .repeat method
+const message2 = 'Bad weather... All Departures Delayed... ';
+console.log(message2.repeat(5)); //* Repeats five times
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`);
+};
+
+planesInLine(5); //* ==> There are 5 planes in line ✈️✈️✈️✈️✈️
+planesInLine(3);
+planesInLine(12);
+
+//! ///////////////STRINGS PART 2//////////////////
+//! ///////////////////////////////////////////////
+// const airline = 'TAP Air Portugal';
+// const plane = 'A320';
+
+// console.log(airline.toLowerCase()); //* Lowercase
+// console.log(airline.toUpperCase()); //* Uppercase
+// console.log('jonas'.toUpperCase()); //* Uppercase
+
+// //? Fix capitalization in name
+// const passenger = 'jonAS';
+// const passengerLower = passenger.toLowerCase();
+// const passengerCorrect =
+//   passengerLower[0].toUpperCase() + passengerLower.slice(1);
+// console.log(passengerCorrect); //* ==> Jonas
+
+// //? Function I created to fix name case
+// function correctCase(name) {
+//   const nameLower = name.toLowerCase();
+//   console.log(nameLower);
+//   const nameCorrect = nameLower[0].toUpperCase() + nameLower.slice(1);
+//   console.log(nameCorrect);
+// }
+// correctCase('clINt');
+
+// const email = 'hello@jonas.io';
+// const loginEmail = ' Hello@Jonas.Io \n';
+
+// const lowerEmail = loginEmail.toLowerCase();
+// //? .trimStart and .trimEnd can also be useful
+// const trimmedEmail = lowerEmail.trim(); //* removes white space
+// console.log(trimmedEmail); //* email is now fixed
+
+// const normalizedEmail = loginEmail.toLowerCase().trim();
+// console.log(normalizedEmail); //* does the same as above
+// //? Compare
+// console.log(normalizedEmail);
+// console.log(email === normalizedEmail); //* true
+
+// //? REPLACING
+// const priceGB = '288,97£';
+// //? 1st argument what to replace, 2nd with what
+// const priceUS = priceGB.replace('£', '$').replace(',', '.');
+// console.log(priceUS); //* ==> 288.97$
+
+// const announcement =
+//   'All passengers come to boarding door 23. Boarding door 23!';
+// //? Note that replaceAll is now in JS and would work
+// console.log(announcement.replace('door', 'gate')); //* only replaced the first door to gate, not the second
+// //? Old way, regular expression
+// console.log(announcement.replace(/door/g, 'gate')); //* does the same as above. g = global
+
+// //? BOOLEANS, self explanatory
+// const plane2 = 'Airbus A320neo';
+// console.log(plane2.includes('A320')); //* ==> true
+// console.log(plane2.includes('Boeing')); //* ==> false
+// console.log(plane2.startsWith('Air')); //* ==> true
+
+// if (plane2.startsWith('Airbus') && plane2.endsWith('neo')) {
+//   console.log('Part of the new Airbus family');
+// } //* ==> Part of the new Airbus family
+
+// //? Practice exercise
+// const checkBaggage = function (items) {
+//   const baggage = items.toLowerCase();
+//   if (baggage.includes('knife') || baggage.includes('gun')) {
+//     console.log('You are NOT allowed on board');
+//   } else {
+//     console.log('Welcome aboard!');
+//   }
+// };
+
+// checkBaggage('I have a laptop, some Food and a pocket Knife');
+// checkBaggage('Socks and camera');
+// checkBaggage('Got some snacks and a gun for protection');
+
+//! ///////////////STRINGS PART 1//////////////////
+//! ///////////////////////////////////////////////
+// const airline = 'TAP Air Portugal';
+// const plane = 'A320';
+
+// console.log(plane[0]); //* ==> A
+// console.log('B737'[0]); //* ==> B
+// console.log(airline.length); //* ==> 16
+// console.log('B737'.length); //* ==> 4
+// console.log(airline.indexOf('r')); //* ==> 6
+// console.log(airline.lastIndexOf('r')); //* ==> 10
+// console.log(airline.lastIndexOf('portugal')); //* ==> -1 because it cannot be found in the string (lowercase p)
+
+// console.log(airline.slice(4)); //* ==> Air Portugal, it begins extracting everything from position 4
+// console.log(airline.slice(4, 7)); //* ==> Air, it begins extracting everything from position 4 ends at 7
+
+// console.log(airline.slice(0, airline.indexOf(' '))); //* ==> TAP
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1)); //* ==> Portugal. Need to add plus one to remove empty space
+// console.log(airline.slice(-2)); //* ==> al, (last 2 letters from Portugal)
+// console.log(airline.slice(1, -1)); //* AP Air Portuga (beginning and end)
+
+// //? Example
+// const checkMiddleSeat = function (seat) {
+//   const s = seat.slice(-1);
+//   if (s === 'B' || s === 'E') console.log('You got the middle seat');
+//   else console.log('You got lucky');
+// };
+
+// checkMiddleSeat('11B');
+// checkMiddleSeat('23C');
+// checkMiddleSeat('3E');
+
+// console.log(new String('jonas')); //* JS converts strings to objects so you can use methods, then converts back to a string to return your result
+// console.log(typeof new String('jonas')); //* ==> object
 
 // const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
