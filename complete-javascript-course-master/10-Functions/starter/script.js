@@ -167,3 +167,50 @@ book.apply(swiss, flightData);
 book.call(swiss, ...flightData);
 
 console.log(swiss);
+
+//! //////////////////BIND METHOD////////////////////
+//! /////////////////////////////////////////////////
+//? bookEW is now bound to euroWings object
+const bookEW = book.bind(euroWings);
+bookEW(23, 'Steven Williams');
+
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+const bookEW23 = book.bind(euroWings, 23);
+bookEW23('Jonas Schmedtmann');
+bookEW23('Martha Cooper');
+
+//? With event listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+
+//? Below results in NaN since the function is attached to the .buy object
+//? Use bing because the call method would call it immediately?
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+//? Partial application
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+//? Below null is replacing .this, which is not needed in this example
+const addVAT = addTax.bind(null, 0.23);
+//? Above is same as writing:
+//? addVat = value => value + value * 0.23;
+
+console.log(addVAT(100)); //* ==> 123
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(100)); //* ==> 123
