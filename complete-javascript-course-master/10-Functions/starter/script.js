@@ -65,34 +65,105 @@
 
 //! /////FUNCTIONS ACCEPTING CALLBACK FUNCTIONS//////
 //! /////////////////////////////////////////////////
-//? Callbacks allow us to create abstraction
-const oneWord = function (str) {
-  return str.replace(/ /g, '').toLowerCase();
+// //? Callbacks allow us to create abstraction
+// const oneWord = function (str) {
+//   return str.replace(/ /g, '').toLowerCase();
+// };
+
+// const upperFirstWord = function (str) {
+//   const [first, ...others] = str.split(' ');
+//   return [first.toUpperCase(), ...others].join(' ');
+// };
+
+// //? Higher order function (takes in a function)
+// const transformer = function (str, fn) {
+//   console.log(`Original string ${str}`);
+//   console.log(`Transformed string: ${fn(str)}`);
+
+//   console.log(`Transformed by: ${fn.name}`);
+// };
+
+// //? upperFirstWord and oneWord are CALLBACK functions
+// transformer('JavaScript is the best!', upperFirstWord);
+// transformer('JavaScript is the best!', oneWord);
+
+// const high5 = function () {
+//   console.log('👋');
+// };
+
+// //? addEventListener is the higher order function
+// //? high5 is the callback function
+// document.body.addEventListener('click', high5);
+
+// ['Jonas', 'Martha', 'Adam'].forEach(high5); //* 3 waves
+
+//! /////////FUNCTIONS RETURNING FUNCTIONS///////////
+//! /////////////////////////////////////////////////
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// //? Same as above but with arrow function, but more confusing
+// const greet = greeting => name => console.log(`${greeting} ${name}`);
+
+// //? greeterHey is now a function, function(name) from above
+// const greeterHey = greet('Hey');
+// greeterHey('Jonas');
+// greeterHey('Steven');
+
+// greet('Hello')('Jonas'); //* ==> Hello Jonas
+
+//! /////////////CALL AND APPLY METHODS//////////////
+//! /////////////////////////////////////////////////
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // book: function() {} // OLD WAY
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
 };
 
-const upperFirstWord = function (str) {
-  const [first, ...others] = str.split(' ');
-  return [first.toUpperCase(), ...others].join(' ');
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
+console.log(lufthansa);
+
+const euroWings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
 };
 
-//? Higher order function (takes in a function)
-const transformer = function (str, fn) {
-  console.log(`Original string ${str}`);
-  console.log(`Transformed string: ${fn(str)}`);
+const book = lufthansa.book;
 
-  console.log(`Transformed by: ${fn.name}`);
+// book(23, 'Sarah Williams'); //* ==> Error, this is undefined
+
+//? .call makes euroWings replace .this
+book.call(euroWings, 23, 'Sarah Williams');
+console.log(euroWings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
 };
 
-//? upperFirstWord and oneWord are CALLBACK functions
-transformer('JavaScript is the best!', upperFirstWord);
-transformer('JavaScript is the best!', oneWord);
+book.call(swiss, 583, 'Mary Cooper');
 
-const high5 = function () {
-  console.log('👋');
-};
+//? .apply method, used to push values from array
+//? not used much anymore, spread is easier
+const flightData = [583, 'George Cooper'];
+book.apply(swiss, flightData);
 
-//? addEventListener is the higher order function
-//? high5 is the callback function
-document.body.addEventListener('click', high5);
+book.call(swiss, ...flightData);
 
-['Jonas', 'Martha', 'Adam'].forEach(high5); //* 3 waves
+console.log(swiss);
