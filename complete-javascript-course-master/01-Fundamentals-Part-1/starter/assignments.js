@@ -121,26 +121,26 @@
 // console.log(`Japan: ${japanPercentage3}%`);
 // console.log(`Germany: ${germanyPercentage3}%`);
 
-function percentageOfWorld1(population) {
-  return (population / 7900) * 100;
-}
+// function percentageOfWorld1(population) {
+//   return (population / 7900) * 100;
+// }
 
-const turkeyPercentage1 = percentageOfWorld1(84).toFixed();
-const japanPercentage1 = percentageOfWorld1(125).toFixed();
-const germanyPercentage1 = percentageOfWorld1(83).toFixed();
+// const turkeyPercentage1 = percentageOfWorld1(84).toFixed();
+// const japanPercentage1 = percentageOfWorld1(125).toFixed();
+// const germanyPercentage1 = percentageOfWorld1(83).toFixed();
 
-console.log(`Turkey: ${turkeyPercentage1}%`);
-console.log(`Japan: ${japanPercentage1}%`);
-console.log(`Germany: ${germanyPercentage1}%`);
+// console.log(`Turkey: ${turkeyPercentage1}%`);
+// console.log(`Japan: ${japanPercentage1}%`);
+// console.log(`Germany: ${germanyPercentage1}%`);
 
-function describePopulation(country, population) {
-  const percentage = percentageOfWorld1(population).toFixed(2);
-  return `${country} has ${population} million people, which is about ${percentage}% of the world.`;
-}
+// function describePopulation(country, population) {
+//   const percentage = percentageOfWorld1(population).toFixed(2);
+//   return `${country} has ${population} million people, which is about ${percentage}% of the world.`;
+// }
 
-const india = describePopulation('India', 1380);
-const mexico = describePopulation('Mexico', 128);
-const spain = describePopulation('Spain', 47);
-console.log(india);
-console.log(mexico);
-console.log(spain);
+// const india = describePopulation('India', 1380);
+// const mexico = describePopulation('Mexico', 128);
+// const spain = describePopulation('Spain', 47);
+// console.log(india);
+// console.log(mexico);
+// console.log(spain);

@@ -207,5 +207,3 @@
 // The total bill is: ${bill + tip}`);
 
 // //? ARRAYS
-
-X;
