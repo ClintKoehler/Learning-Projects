@@ -52,28 +52,86 @@
 //! ////////////////////////////////////////
 //? Returns a new array
 //? Does not change the size of original array
+// const people = [
+//   { name: 'bob', age: 20, position: 'developer' },
+//   { name: 'peter', age: 25, position: 'designer' },
+//   { name: 'susy', age: 30, position: 'the boss' },
+//   { name: 'anna', age: 35, position: 'the boss' },
+// ];
+
+// const ages = people.map(function (person) {
+//   return person.age + 20;
+// });
+
+// const newPeople = people.map(function (person) {
+//   return {
+//     firstName: person.name.toUpperCase(),
+//     oldAge: person.age + 20,
+//   };
+// });
+
+// const names = people.map(function (person) {
+//   return `<h1>${person.name}</h1>`;
+// }); //* ==> [<h1>bob</h1>, ..., ..., ...]
+
+// document.body.innerHTML = names.join('');
+
+// console.log(names);
+
+//! ////////////////FILTER//////////////////
+//! ////////////////////////////////////////
+//? Does return a new array
+//? Can manipulate the size of new array
+//? Returns based on condition
+// const people = [
+//   { name: 'bob', age: 20, position: 'developer' },
+//   { name: 'peter', age: 25, position: 'designer' },
+//   { name: 'susy', age: 30, position: 'the boss' },
+//   { name: 'anna', age: 35, position: 'the boss' },
+// ];
+
+// const youngPeople = people.filter(function (person) {
+//   return person.age <= 25;
+// });
+
+// const developers = people.filter(function (person) {
+//   return person.position === 'developer';
+// });
+
+// console.log(developers); //* ==> bob object, would return empty array if there were no 'developers'
+// console.log(youngPeople); //* ==> bob, peter objects
+
+//! ////////////////FIND////////////////////
+//! ////////////////////////////////////////
+//? returns single instance, this case objects
+//? returns FIRST match, if no match, undefined
+//? great for getting unique values
+//? bad for values that are repeating
+//? Great for APIs
 const people = [
-  { name: 'bob', age: 20, position: 'developer' },
-  { name: 'peter', age: 25, position: 'designer' },
-  { name: 'susy', age: 30, position: 'the boss' },
-  { name: 'anna', age: 35, position: 'the boss' },
+  { name: 'bob', age: 20, position: 'developer', id: 1 },
+  { name: 'peter', age: 25, position: 'designer', id: 2 },
+  { name: 'susy', age: 30, position: 'the boss', id: 3 },
+  { name: 'anna', age: 35, position: 'the boss', id: 4 },
 ];
 
-const ages = people.map(function (person) {
-  return person.age + 20;
+const names = ['bob', 'peter', 'suzy'];
+console.log(
+  names.find(function (name) {
+    return name === 'bob';
+  })
+); //* ==> bob because names is all strings
+
+const person = people.find(function (person) {
+  return person.id === 3;
 });
 
-const newPeople = people.map(function (person) {
-  return {
-    firstName: person.name.toUpperCase(),
-    oldAge: person.age + 20,
-  };
+console.log(person); //* ==> suzy object
+console.log(person.name); //* ==> susy
+
+const person2 = people.filter(function (person) {
+  return person.id === 3;
 });
 
-const names = people.map(function (person) {
-  return `<h1>${person.name}</h1>`;
-}); //* ==> [<h1>bob</h1>, ..., ..., ...]
-
-document.body.innerHTML = names.join('');
-
-console.log(names);
+console.log(person2); //* ==> susy array
+console.log(person2[0].name); //* ==> susy
