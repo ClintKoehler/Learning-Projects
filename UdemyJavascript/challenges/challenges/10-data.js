@@ -30,9 +30,3 @@ const students = [
     favoriteSubject: 'math',
   },
 ];
-
-function sayName(name) {
-  console.log(name);
-}
-
-console.log(students);
