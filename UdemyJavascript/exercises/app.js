@@ -52,27 +52,27 @@
 //! ////////////////////////////////////////
 //? Returns a new array
 //? Does not change the size of original array
-// const people = [
-//   { name: 'bob', age: 20, position: 'developer' },
-//   { name: 'peter', age: 25, position: 'designer' },
-//   { name: 'susy', age: 30, position: 'the boss' },
-//   { name: 'anna', age: 35, position: 'the boss' },
-// ];
+const people = [
+  { name: 'bob', age: 20, position: 'developer' },
+  { name: 'peter', age: 25, position: 'designer' },
+  { name: 'susy', age: 30, position: 'the boss' },
+  { name: 'anna', age: 35, position: 'the boss' },
+];
 
-// const ages = people.map(function (person) {
-//   return person.age + 20;
-// });
+const ages = people.map(function (person) {
+  return person.age + 20;
+});
 
-// const newPeople = people.map(function (person) {
-//   return {
-//     firstName: person.name.toUpperCase(),
-//     oldAge: person.age + 20,
-//   };
-// });
+const newPeople = people.map(function (person) {
+  return {
+    firstName: person.name.toUpperCase(),
+    oldAge: person.age + 20,
+  };
+});
 
-// const names = people.map(function (person) {
-//   return `<h1>${person.name}</h1>`;
-// }); //* ==> [<h1>bob</h1>, ..., ..., ...]
+const names = people.map(function (person) {
+  return `<h1>${person.name}</h1>`;
+}); //* ==> [<h1>bob</h1>, ..., ..., ...]
 
 // document.body.innerHTML = names.join('');
 
@@ -142,19 +142,19 @@
 //? reduces to a single value - number, array, object
 //? 1 param ('acc') - total of all calculations
 //? 2 param ('curr') - current iteration/value
-const people = [
-  { name: 'bob', age: 20, position: 'developer', id: 1, salary: 200 },
-  { name: 'peter', age: 25, position: 'designer', id: 2, salary: 300 },
-  { name: 'susy', age: 30, position: 'the boss', id: 3, salary: 500 },
-  { name: 'anna', age: 35, position: 'the boss', id: 4, salary: 500 },
-];
+// const people = [
+//   { name: 'bob', age: 20, position: 'developer', id: 1, salary: 200 },
+//   { name: 'peter', age: 25, position: 'designer', id: 2, salary: 300 },
+//   { name: 'susy', age: 30, position: 'the boss', id: 3, salary: 500 },
+//   { name: 'anna', age: 35, position: 'the boss', id: 4, salary: 500 },
+// ];
 
-const total = people.reduce(function (acc, currItem) {
-  //! ALWAYS RETURN THE ACCUMALATOR (ACC)
-  console.log(`total ${acc}`);
-  console.log(`current money: ${currItem.salary}`);
-  acc += currItem.salary;
-  return acc;
-}, 0);
+// const total = people.reduce(function (acc, currItem) {
+//   //! ALWAYS RETURN THE ACCUMALATOR (ACC)
+//   console.log(`total ${acc}`);
+//   console.log(`current money: ${currItem.salary}`);
+//   acc += currItem.salary;
+//   return acc;
+// }, 0);
 
-console.log(total); //* ==> 1500
+// console.log(total); //* ==> 1500
