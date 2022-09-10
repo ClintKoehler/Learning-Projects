@@ -4,13 +4,15 @@
 //! //////////////////////////////////////////////////
 // const bookings = [];
 
-// //? createBooking() builds an object
+// //? We set default param using ES6 below
+// //? The order of params is important for calculations
 // const createBooking = function (
 //   flightNum,
 //   numPassengers = 1,
-//   price = 199 * numPassengers //? Price is dynamically calculated with this default value. Must define parameters used before this parameter, (numPassengers)
+//   price = 199 * numPassengers
 // ) {
-//   // //? default values ES5 way (OLD WAY)
+//   //? Old ES5 way to set default paramaters
+//   //? || OR uses first truthy value
 //   // numPassengers = numPassengers || 1;
 //   // price = price || 199;
 
@@ -26,37 +28,46 @@
 // createBooking('LH123');
 // createBooking('LH123', 2, 800);
 // createBooking('LH123', 5);
-// //? to skip the middle parameter use undefined
+// //? undefined is the same as not setting it
 // createBooking('LH123', undefined, 1000);
 
 //! //////////////VALUES VS REFERENCE/////////////////
 //! //////////////////////////////////////////////////
-
+// //? How primitives and objects work in reference to functions
 // const flight = 'LH234';
 // const jonas = {
 //   name: 'Jonas Schmedtmann',
-//   passport: 223479754498,
+//   passport: 235495720938,
 // };
 
 // const checkIn = function (flightNum, passenger) {
 //   flightNum = 'LH999';
 //   passenger.name = 'Mr. ' + passenger.name;
 
-//   if (passenger.passport === 223479754498) {
+//   if (passenger.passport === 235495720938) {
 //     alert('Check in');
-//   } else alert('Wrong passport!');
+//   } else {
+//     alert('Wrong passport');
+//   }
+//   console.log(flightNum);
 // };
 
 // checkIn(flight, jonas);
-// console.log(flight); //* ==> LH234 (unchanged, PRIMITIVE)
-// console.log(jonas); //* ==> Mr. Jonas... (changed, OBJECT)
+// console.log(flight); //* ==> LH234 because it just creates a copy of the original value AKA reference
+// //* You have to log flightNum in the function to get the new flightNum value
+// console.log(jonas);
 
+// //? Example
 // const newPassport = function (person) {
-//   person.passport = Math.trunc(Math.random() * 100000000);
+//   person.passport = Math.trunc(Math.random() * 1000000000);
 // };
 
-// newPassport(jonas);
-// checkIn(flight, jonas); //* ==> Alert(Wrong passport!)
+// newPassport(jonas); //* this makes the passport check fail, obviously
+// console.log('jonas object', jonas);
+// checkIn(flight, jonas);
+// console.log(jonas.passport); //* updated
+
+//? JS ONLY passes by value, not reference
 
 //! ///////FIRST CLASS & HIGHER ORDER FUNCTIONS//////
 //! /////////////////////////////////////////////////
@@ -117,100 +128,100 @@
 
 //! /////////////CALL AND APPLY METHODS//////////////
 //! /////////////////////////////////////////////////
-const lufthansa = {
-  airline: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  // book: function() {} // OLD WAY
-  book(flightNum, name) {
-    console.log(
-      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
-    );
-    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
-  },
-};
+// const lufthansa = {
+//   airline: 'Lufthansa',
+//   iataCode: 'LH',
+//   bookings: [],
+//   // book: function() {} // OLD WAY
+//   book(flightNum, name) {
+//     console.log(
+//       `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+//     );
+//     this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+//   },
+// };
 
-lufthansa.book(239, 'Jonas Schmedtmann');
-lufthansa.book(635, 'John Smith');
-console.log(lufthansa);
+// lufthansa.book(239, 'Jonas Schmedtmann');
+// lufthansa.book(635, 'John Smith');
+// console.log(lufthansa);
 
-const euroWings = {
-  airline: 'Eurowings',
-  iataCode: 'EW',
-  bookings: [],
-};
+// const euroWings = {
+//   airline: 'Eurowings',
+//   iataCode: 'EW',
+//   bookings: [],
+// };
 
-const book = lufthansa.book;
+// const book = lufthansa.book;
 
-// book(23, 'Sarah Williams'); //* ==> Error, this is undefined
+// // book(23, 'Sarah Williams'); //* ==> Error, this is undefined
 
-//? .call makes euroWings replace .this
-book.call(euroWings, 23, 'Sarah Williams');
-console.log(euroWings);
+// //? .call makes euroWings replace .this
+// book.call(euroWings, 23, 'Sarah Williams');
+// console.log(euroWings);
 
-book.call(lufthansa, 239, 'Mary Cooper');
-console.log(lufthansa);
+// book.call(lufthansa, 239, 'Mary Cooper');
+// console.log(lufthansa);
 
-const swiss = {
-  airline: 'Swiss Air Lines',
-  iataCode: 'LX',
-  bookings: [],
-};
+// const swiss = {
+//   airline: 'Swiss Air Lines',
+//   iataCode: 'LX',
+//   bookings: [],
+// };
 
-book.call(swiss, 583, 'Mary Cooper');
+// book.call(swiss, 583, 'Mary Cooper');
 
-//? .apply method, used to push values from array
-//? not used much anymore, spread is easier
-const flightData = [583, 'George Cooper'];
-book.apply(swiss, flightData);
+// //? .apply method, used to push values from array
+// //? not used much anymore, spread is easier
+// const flightData = [583, 'George Cooper'];
+// book.apply(swiss, flightData);
 
-book.call(swiss, ...flightData);
+// book.call(swiss, ...flightData);
 
-console.log(swiss);
+// console.log(swiss);
 
 //! //////////////////BIND METHOD////////////////////
 //! /////////////////////////////////////////////////
-//? bookEW is now bound to euroWings object
-const bookEW = book.bind(euroWings);
-bookEW(23, 'Steven Williams');
+// //? bookEW is now bound to euroWings object
+// const bookEW = book.bind(euroWings);
+// bookEW(23, 'Steven Williams');
 
-const bookLH = book.bind(lufthansa);
-const bookLX = book.bind(swiss);
+// const bookLH = book.bind(lufthansa);
+// const bookLX = book.bind(swiss);
 
-const bookEW23 = book.bind(euroWings, 23);
-bookEW23('Jonas Schmedtmann');
-bookEW23('Martha Cooper');
+// const bookEW23 = book.bind(euroWings, 23);
+// bookEW23('Jonas Schmedtmann');
+// bookEW23('Martha Cooper');
 
-//? With event listeners
-lufthansa.planes = 300;
-lufthansa.buyPlane = function () {
-  console.log(this);
-  this.planes++;
-  console.log(this.planes);
-};
+// //? With event listeners
+// lufthansa.planes = 300;
+// lufthansa.buyPlane = function () {
+//   console.log(this);
+//   this.planes++;
+//   console.log(this.planes);
+// };
 
-//? Below results in NaN since the function is attached to the .buy object
-//? Use bing because the call method would call it immediately?
-document
-  .querySelector('.buy')
-  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+// //? Below results in NaN since the function is attached to the .buy object
+// //? Use bing because the call method would call it immediately?
+// document
+//   .querySelector('.buy')
+//   .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
 
-//? Partial application
-const addTax = (rate, value) => value + value * rate;
-console.log(addTax(0.1, 200));
+// //? Partial application
+// const addTax = (rate, value) => value + value * rate;
+// console.log(addTax(0.1, 200));
 
-//? Below null is replacing .this, which is not needed in this example
-const addVAT = addTax.bind(null, 0.23);
-//? Above is same as writing:
-//? addVat = value => value + value * 0.23;
+// //? Below null is replacing .this, which is not needed in this example
+// const addVAT = addTax.bind(null, 0.23);
+// //? Above is same as writing:
+// //? addVat = value => value + value * 0.23;
 
-console.log(addVAT(100)); //* ==> 123
+// console.log(addVAT(100)); //* ==> 123
 
-const addTaxRate = function (rate) {
-  return function (value) {
-    return value + value * rate;
-  };
-};
+// const addTaxRate = function (rate) {
+//   return function (value) {
+//     return value + value * rate;
+//   };
+// };
 
-const addVAT2 = addTaxRate(0.23);
-console.log(addVAT2(100)); //* ==> 123
+// const addVAT2 = addTaxRate(0.23);
+// console.log(addVAT2(100)); //* ==> 123
