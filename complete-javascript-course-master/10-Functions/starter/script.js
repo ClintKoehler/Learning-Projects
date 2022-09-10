@@ -86,142 +86,152 @@
 //   return [first.toUpperCase(), ...others].join(' ');
 // };
 
-// //? Higher order function (takes in a function)
+// //? Higher order function
 // const transformer = function (str, fn) {
-//   console.log(`Original string ${str}`);
+//   console.log(`Original string: ${str}`);
 //   console.log(`Transformed string: ${fn(str)}`);
 
 //   console.log(`Transformed by: ${fn.name}`);
+//   //* ==> Transformed by: upperFirstWord
 // };
 
-// //? upperFirstWord and oneWord are CALLBACK functions
-// transformer('JavaScript is the best!', upperFirstWord);
-// transformer('JavaScript is the best!', oneWord);
+// transformer('JaveScript is the best!', upperFirstWord);
+// console.log('----------');
+// transformer('JaveScript is the best!', oneWord);
 
+// //? JS uses callbacks all the time because:
+// //? Splits up functionality
+// //? Allows abstraction
 // const high5 = function () {
 //   console.log('👋');
 // };
 
-// //? addEventListener is the higher order function
-// //? high5 is the callback function
+// //? eventlistener is the high order function here
 // document.body.addEventListener('click', high5);
 
-// ['Jonas', 'Martha', 'Adam'].forEach(high5); //* 3 waves
+// ['Jonas', 'Martha', 'Adam'].forEach(high5); //* 3 high5's
 
 //! /////////FUNCTIONS RETURNING FUNCTIONS///////////
 //! /////////////////////////////////////////////////
-// const greet = function (greeting) {
-//   return function (name) {
-//     console.log(`${greeting} ${name}`);
-//   };
+// //? Very usful for functional programing
+// // const greet = function (greeting) {
+// //   return function (name) {
+// //     console.log(`${greeting} ${name}`);
+// //   };
+// // };
+
+// //? Challenge, I swapped greet for greet2
+// //? Arrow function version, technically doesn't need brackets or return due to being one line of code
+// const greet2 = greeting => {
+//   return name => console.log(`${greeting} ${name}`);
 // };
 
-// //? Same as above but with arrow function, but more confusing
-// const greet = greeting => name => console.log(`${greeting} ${name}`);
+// //? greeterHey is now a function
+// const greeterHey = greet2('Hey');
 
-// //? greeterHey is now a function, function(name) from above
-// const greeterHey = greet('Hey');
-// greeterHey('Jonas');
-// greeterHey('Steven');
+// //? This works because of closures (don't worry about it yet)
+// greeterHey('Jonas'); //* Hey Jonas
+// greeterHey('Steven'); //* Hey Steven
 
-// greet('Hello')('Jonas'); //* ==> Hello Jonas
+// greet2('Hello')('Jonas'); //* Hello Jonas
 
 //! /////////////CALL AND APPLY METHODS//////////////
 //! /////////////////////////////////////////////////
-// const lufthansa = {
-//   airline: 'Lufthansa',
-//   iataCode: 'LH',
-//   bookings: [],
-//   // book: function() {} // OLD WAY
-//   book(flightNum, name) {
-//     console.log(
-//       `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
-//     );
-//     this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
-//   },
-// };
+// //? Bookings properties need to all be the same for these examples
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // book: function () {} //? old way
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
 
 // lufthansa.book(239, 'Jonas Schmedtmann');
 // lufthansa.book(635, 'John Smith');
-// console.log(lufthansa);
 
-// const euroWings = {
-//   airline: 'Eurowings',
-//   iataCode: 'EW',
-//   bookings: [],
-// };
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
 
-// const book = lufthansa.book;
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
 
-// // book(23, 'Sarah Williams'); //* ==> Error, this is undefined
+// //? book is no longer a method, it is now a function
+// //? this will now point to undefined
+const book = lufthansa.book;
 
-// //? .call makes euroWings replace .this
-// book.call(euroWings, 23, 'Sarah Williams');
-// console.log(euroWings);
+// // book(23, 'Sarah Williams'); //? Does not work
+
+// //? CALL METHOD
+// //? eurowings specifies what .this should point to using the call method
+// book.call(eurowings, 23, 'Sarah Williams');
+// console.log(eurowings);
 
 // book.call(lufthansa, 239, 'Mary Cooper');
 // console.log(lufthansa);
 
-// const swiss = {
-//   airline: 'Swiss Air Lines',
-//   iataCode: 'LX',
-//   bookings: [],
-// };
-
-// book.call(swiss, 583, 'Mary Cooper');
-
-// //? .apply method, used to push values from array
-// //? not used much anymore, spread is easier
+// //? APPLY METHOD
+// //? Same thing, but does not revieve list of argument, just takes an array of elements
 // const flightData = [583, 'George Cooper'];
-// book.apply(swiss, flightData);
+// book.apply(lufthansa, flightData);
+// console.log(lufthansa);
 
-// book.call(swiss, ...flightData);
-
-// console.log(swiss);
+// //? Not used very much anymore because call is better with spread operator
+// //? Below is the same as the apply example above
+// book.call(lufthansa, ...flightData);
 
 //! //////////////////BIND METHOD////////////////////
 //! /////////////////////////////////////////////////
 // //? bookEW is now bound to euroWings object
-// const bookEW = book.bind(euroWings);
-// bookEW(23, 'Steven Williams');
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
 
-// const bookLH = book.bind(lufthansa);
-// const bookLX = book.bind(swiss);
+bookEW(23, 'Steven Williams');
 
-// const bookEW23 = book.bind(euroWings, 23);
-// bookEW23('Jonas Schmedtmann');
-// bookEW23('Martha Cooper');
+//? Below always books a eurowings flight 23 flight
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Jonas Schmedtmann');
 
-// //? With event listeners
-// lufthansa.planes = 300;
-// lufthansa.buyPlane = function () {
-//   console.log(this);
-//   this.planes++;
-//   console.log(this.planes);
-// };
+//? With event listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
 
-// //? Below results in NaN since the function is attached to the .buy object
-// //? Use bing because the call method would call it immediately?
-// document
-//   .querySelector('.buy')
-//   .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+  this.planes++;
+  console.log(this.planes);
+};
 
-// //? Partial application
-// const addTax = (rate, value) => value + value * rate;
-// console.log(addTax(0.1, 200));
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa)); //? without the bind method this points to button element so you get NaN, this because eventlistener is calling the button element
 
-// //? Below null is replacing .this, which is not needed in this example
-// const addVAT = addTax.bind(null, 0.23);
-// //? Above is same as writing:
-// //? addVat = value => value + value * 0.23;
+//? Partial application
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
 
-// console.log(addVAT(100)); //* ==> 123
+//? Null because this keyword is not in fn and does not matter
+//? Rate value is now set by bind
+//? Remember the order of values matters!
+const addVAT = addTax.bind(null, 0.23);
+console.log(addVAT(100));
 
-// const addTaxRate = function (rate) {
-//   return function (value) {
-//     return value + value * rate;
-//   };
-// };
+//? Below is how you write it with a fn that returns an fn
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
 
-// const addVAT2 = addTaxRate(0.23);
-// console.log(addVAT2(100)); //* ==> 123
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(100));
