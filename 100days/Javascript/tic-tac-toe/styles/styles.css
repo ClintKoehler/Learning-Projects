@@ -1,99 +1,39 @@
 body {
-  font-family: 'Roboto', sans-serif;
   margin: 0;
+  font-family: 'Open-Sans', sans-serif;
   color: rgb(44, 41, 44);
+  background-color: rgb(247, 239, 247);
 }
 
-header {
-  height: 9rem;
-  width: 100%;
-  background: linear-gradient(30deg, rgb(128, 147, 201), rgb(81, 93, 127));
-  color: aliceblue;
+#main-header {
+  background-color: rgb(140, 0, 255);
+  color: white;
+  padding: 2rem 5%;
   text-align: center;
-  margin-top: -1.4rem;
-  padding: 0.5rem;
 }
 
-header h1 {
-  padding-top: 1rem;
-}
-
-header p {
-  margin-top: -0.4rem;
-}
-
-.game-configuration {
-  display: flex;
-  justify-content: center;
-  margin-top: 2.3rem;
-}
-
-.player-info-card {
-  font-family: inherit;
-  background-color: rgb(191, 200, 220);
-  box-shadow: 1px 1px 5px rgb(124, 127, 138);
-  border-radius: 5px;
-  text-align: center;
-  height: 11rem;
-  width: 20rem;
-  margin: 1rem;
-  padding: 0.5rem;
-  white-space: nowrap;
-}
-
-.player-info-card h3 {
-  margin: 1rem auto 0.5rem;
-}
-
-.player-name {
-  margin: 0.3rem auto;
-}
-
-.xo {
-  font-size: 2rem;
-  margin: 0.4rem auto 0.2rem;
-}
-
-.edit {
-  background-color: transparent;
-  border-color: transparent;
-  color: #4283c5;
-  font-weight: 600;
+.btn {
   font: inherit;
-}
-
-.edit:hover {
-  font-size: 1.1rem;
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(140, 0, 255);
+  border: 1px solid rgb(140, 0, 255);
+  color: white;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-#player-one:hover {
-  border: 0px;
-  box-shadow: 1px 1px 8px rgb(81, 93, 127);
-  border-style: ridge;
+.btn-alt {
+  background-color: transparent;
+  border-color: transparent;
+  color: rgb(140, 0, 255);
 }
 
-#player-two:hover {
-  border: 0px;
-  box-shadow: 1px 1px 8px rgb(81, 93, 127);
-  border-style: ridge;
+.btn:hover {
+  background-color: rgb(79, 10, 190);
+  border-color: rgb(79, 10, 190);
 }
 
-#start-btn {
-  font-family: inherit;
-  font-weight: 600;
-  background-color: rgb(128, 147, 201);
-  box-shadow: 1px 1px 5px rgb(124, 127, 138);
-  border: 1px solid;
-  border-radius: 5px;
-  color: white;
-  margin: 0px auto;
-  padding: 0.5rem 1.4rem;
-  display: block;
-}
-
-#start-btn:hover {
-  border: 1px;
-  box-shadow: 1px 1px 8px rgb(81, 93, 127);
-  border-style: ridge;
+.btn-alt:hover {
+  background-color: rgb(230, 201, 252);
+  border-color: transparent;
 }
